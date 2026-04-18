@@ -1,28 +1,52 @@
-import React from 'react'
-import { AiFillGithub, AiFillFacebook, AiFillLinkedin } from 'react-icons/ai'
+import { SOCIAL_LINKS } from "@/data/links";
+import Image from "next/image";
+import Link from "next/link";
+import { AiFillFacebook, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+
+const FOOTER_LINKS = [
+  { href: SOCIAL_LINKS.github, Icon: AiFillGithub, label: "GitHub" },
+  { href: SOCIAL_LINKS.facebook, Icon: AiFillFacebook, label: "Facebook" },
+  { href: SOCIAL_LINKS.linkedin, Icon: AiFillLinkedin, label: "LinkedIn" },
+];
+
+const iconBtnClass =
+  "bg-brand rounded-full p-2 hover:text-brand hover:bg-white transition-colors";
 
 const Footer = () => {
   return (
-    <div className='bg-slate-600 px-4'>
-      <div className='py-8 flex flex-col md:flex-row gap-4 justify-between items-center max-w-screen-xl mx-auto'>
-        <div className='flex items-center justify-center gap-2 pb-4'>
-          <img className='w-8' src="https://img.icons8.com/?size=1x&id=gRWfzIimRbsT&format=png" alt="logo" />
-          <h1 className=' text-3xl'>Abu Taher</h1>
+    <footer className="px-4 bg-slate-600">
+      <div className="flex flex-col items-center justify-between max-w-screen-xl gap-4 py-8 mx-auto md:flex-row">
+        <div className="flex items-center justify-center gap-2 pb-4">
+          <Image
+            src="/logo.png"
+            alt="Abu Taher logo"
+            width={32}
+            height={32}
+            className="w-10 h-10"
+          />
+          <p className="text-3xl">Abu Taher</p>
         </div>
-        <div className='flex justify-center gap-4'>
-          <a href="https://github.com/writerabutaher" target='_blank' className='bg-teal-500  rounded-full p-2 border-none border-teal-500 hover:text-teal-500 hover:bg-white'>
-            <AiFillGithub size={'2rem'} />
-          </a>
-          <a href="https://www.facebook.com/abutaher9682/" target='_blank' className='bg-teal-500  rounded-full p-2 border-none border-teal-500 hover:text-teal-500 hover:bg-white'>
-            <AiFillFacebook size={'2rem'} />
-          </a>
-          <a href="https://www.linkedin.com/in/writerabutaher/" target='_blank' className='bg-teal-500  rounded-full p-2 border-none border-teal-500 hover:text-teal-500 hover:bg-white'>
-            <AiFillLinkedin size={'2rem'} />
-          </a>
-        </div>
-      </div>
-    </div>
-  )
-}
 
-export default Footer
+        <nav
+          aria-label="Footer social links"
+          className="flex justify-center gap-4"
+        >
+          {FOOTER_LINKS.map(({ href, Icon, label }) => (
+            <Link
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className={iconBtnClass}
+            >
+              <Icon size="2rem" aria-hidden="true" />
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from "react";
+"use client";
+
+import { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
 export const Reveal = ({ children, width = "fit-content" }) => {
@@ -9,13 +11,9 @@ export const Reveal = ({ children, width = "fit-content" }) => {
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
-    if (isInView) {
-      slideControls.start("visible");
-      mainControls.start("visible");
-    } else {
-      slideControls.start("hidden");
-      mainControls.start("hidden");
-    }
+    if (!isInView) return;
+    mainControls.start("visible");
+    slideControls.start("visible");
   }, [isInView, mainControls, slideControls]);
 
   return (
@@ -39,6 +37,7 @@ export const Reveal = ({ children, width = "fit-content" }) => {
         initial="hidden"
         animate={slideControls}
         transition={{ duration: 0.5, ease: "easeIn" }}
+        aria-hidden="true"
         style={{
           position: "absolute",
           top: 4,

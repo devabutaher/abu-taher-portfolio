@@ -1,19 +1,14 @@
-import { MyLinks } from "@/components/nav/components/MyLinks";
 import { Reveal } from "@/components/utils/Reveal";
 import { SectionHeader } from "@/components/utils/SectionHeader";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { MyLinks } from "../nav/components/MyLinks";
 import styles from "./about.module.scss";
 import { Stats } from "./Stats";
-import { AiOutlineArrowRight } from "react-icons/ai";
 
 export const About = () => {
   return (
-    <section
-      id="about"
-      className="section-wrapper">
-      <SectionHeader
-        title="About"
-        dir="l"
-      />
+    <section id="about" className="section-wrapper">
+      <SectionHeader title="About" dir="l" />
       <div className={styles.about}>
         <div>
           <Reveal>

@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./outlinebutton.module.scss";
 
 export const OutlineButton = ({ children, onClick }) => {
