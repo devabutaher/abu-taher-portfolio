@@ -2,13 +2,17 @@
   position: relative;
   z-index: 10;
 
-  width: fit-content;
-  margin: 4.8rem 0;
+  width: 100%;
+  margin: 3rem 0;
+
+  @media (min-width: 768px) {
+    margin: 4.8rem 0;
+  }
 }
 
 .title {
   font-size: var(--text-xl);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.1;
 
   span {
@@ -17,14 +21,14 @@
 
   @media (max-width: 768px) {
     font-size: var(--text-md);
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
 .subTitle {
   font-size: var(--text-lg);
   line-height: 1.1;
-  margin-top: 1.6rem;
+  margin-top: 1rem;
   font-weight: 200;
 
   @media (max-width: 768px) {
@@ -39,11 +43,12 @@
 
 .aboutCopy {
   font-size: var(--text-xs);
-  margin: 2.4rem 0;
+  margin: 2rem 0;
   max-width: 650px;
   font-weight: 200;
-
+  
   @media (min-width: 768px) {
     font-size: var(--text-sm);
+    line-height: 1.8;
   }
 }

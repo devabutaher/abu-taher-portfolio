@@ -9,7 +9,7 @@ const BASE_URL = "https://abutaher.vercel.app";
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Abu Taher | Full-Stack Developer",
+    default: "Abu Taher | Web Developer",
     template: "%s | Abu Taher",
   },
   description:
@@ -29,7 +29,7 @@ export const metadata = {
     locale: "en_US",
     url: BASE_URL,
     siteName: "Abu Taher | Portfolio",
-    title: "Abu Taher | Full-Stack Developer",
+    title: "Abu Taher | Web Developer",
     description:
       "Abu Taher is a MERN stack developer specialising in React, Next.js, and Node.js.",
     images: [
@@ -37,13 +37,13 @@ export const metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Abu Taher — Full-Stack Developer",
+        alt: "Abu Taher — Web Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abu Taher | Full-Stack Developer",
+    title: "Abu Taher | Web Developer",
     description:
       "Abu Taher is a MERN stack developer specialising in React, Next.js, and Node.js.",
     images: ["/og-image.png"],
@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         id="root"
-        className={`${inter.className} bg-gradient-to-r from-slate-900 to-slate-700 fireworks`}
+        className={`${inter.className} bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-gray-950 to-slate-950`}
       >
         {children}
         <Toaster position="bottom-right" />

@@ -5,11 +5,16 @@
 :root {
   font-size: 62.5%;
 
-  --background-light: #334155;
-  --background-dark: #0f172a;
-
-  --text: white;
-  --brand: #0d9488;
+  --background-lighter: oklch(25.7% 0.09 281.288);
+  /* Deep Indigo */
+  --background-light: oklch(19.3% 0.066 272.991);;
+  /* Middle Color */
+  --background-dark: oklch(12.9% 0.042 264.695);
+  /* Slate 950 */
+  --text: oklch(92.9% 0.013 255.508);
+  /* Slate 200 */
+  --brand: #8b5cf6;
+  /* Violet 500 */
 
   --text-xs: 1.6rem;
   --text-sm: 1.8rem;
@@ -26,8 +31,8 @@
 }
 
 *::selection {
-  background: #0d9488;
-  color: white;
+  background: var(--brand);
+  color: var(--text);
 }
 
 html,
@@ -37,7 +42,7 @@ body {
 }
 
 body {
-  color: white;
+  color: var(--text);
 }
 
 a {
@@ -50,19 +55,19 @@ a {
   z-index: 10;
   max-width: 1150px;
   margin: auto;
-  padding: 9.6rem 0;
+  padding: 9rem 0;
   overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .section-wrapper {
-    padding: 5.2rem 2.4rem;
+    padding: 4rem 1.5rem;
   }
 }
 
 .chip {
   font-size: var(--text-xs);
-  background: var(--background-light);
-  padding: 0.2rem 0.8rem;
+  background: var(--background-lighter);
+  padding: 0.4rem 1rem;
   border-radius: 999px;
 }

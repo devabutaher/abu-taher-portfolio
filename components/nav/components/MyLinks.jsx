@@ -1,7 +1,4 @@
-"use client";
-
 import { SOCIAL_LINKS } from "@/data/links";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   AiFillGithub,
@@ -28,21 +25,14 @@ export const MyLinks = () => {
   return (
     <div className={styles.links}>
       {LINKS.map(({ href, Icon, label }, i) => (
-        <motion.span
-          key={label}
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: i * 0.1 }}
+        <Link
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
         >
-          <Link
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-          >
-            <Icon size="2.8rem" aria-hidden="true" />
-          </Link>
-        </motion.span>
+          <Icon size="2.8rem" aria-hidden="true" />
+        </Link>
       ))}
     </div>
   );

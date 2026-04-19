@@ -35,7 +35,7 @@
 }
 
 .outlineButton:hover {
-  color: white;
+  color: var(--text);
 }
 
 .outlineButton:hover::before {

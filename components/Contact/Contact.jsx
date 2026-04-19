@@ -37,7 +37,7 @@ const Contact = () => {
       <Reveal width="100%">
         <form
           onSubmit={sendEmail}
-          className="grid sm:grid-cols-2 gap-8"
+          className="grid gap-8 sm:grid-cols-2"
           noValidate
         >
           <div>
@@ -89,7 +89,7 @@ const Contact = () => {
             />
           </div>
 
-          <div className="sm:col-span-2 flex justify-between items-center">
+          <div className="flex items-center justify-between sm:col-span-2">
             <StandardButton type="submit">
               <BiPaperPlane
                 size="2.2rem"
