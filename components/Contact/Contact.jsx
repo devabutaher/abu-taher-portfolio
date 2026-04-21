@@ -1,106 +1,163 @@
 "use client";
 
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { BiPaperPlane } from "react-icons/bi";
-import { StandardButton } from "../buttons/StandardButton";
+
+import { BiLoaderAlt, BiPaperPlane } from "react-icons/bi";
+import { SiGithub, SiTiktok, SiTwitter, SiYoutube } from "react-icons/si";
+
 import { Reveal } from "../utils/Reveal";
 import { SectionHeader } from "../utils/SectionHeader";
 import styles from "./contact.module.scss";
 
-const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-const inputClass = `${styles.text} w-full bg-transparent text-white border-2 focus:border-brand rounded outline-none transition duration-100 px-3 py-2`;
+const Block = ({ className = "", children, ...rest }) => (
+  <motion.div
+    variants={{
+      initial: { scale: 0.5, y: 50, opacity: 0 },
+      animate: { scale: 1, y: 0, opacity: 1 },
+    }}
+    transition={{ type: "spring", mass: 3, stiffness: 400, damping: 50 }}
+    className={`${styles.socialBlock} ${className}`}
+    {...rest}
+  >
+    {children}
+  </motion.div>
+);
+
+const SocialsBlock = () => (
+  <div className={styles.socialGrid}>
+    <Block
+      whileHover={{ rotate: "2.5deg", scale: 1.05 }}
+      className="bg-red-500"
+    >
+      <a href="#">
+        <SiYoutube />
+      </a>
+    </Block>
+
+    <Block
+      whileHover={{ rotate: "-2.5deg", scale: 1.05 }}
+      className="bg-green-600"
+    >
+      <a href="#">
+        <SiGithub />
+      </a>
+    </Block>
+
+    <Block
+      whileHover={{ rotate: "-2.5deg", scale: 1.05 }}
+      className={`${styles.tiktok} bg-zinc-50`}
+    >
+      <a href="#">
+        <SiTiktok />
+      </a>
+    </Block>
+
+    <Block
+      whileHover={{ rotate: "2.5deg", scale: 1.05 }}
+      className="bg-blue-500"
+    >
+      <a href="#">
+        <SiTwitter />
+      </a>
+    </Block>
+  </div>
+);
 
 const Contact = () => {
-  const sendEmail = (e) => {
+  const [loading, setLoading] = useState(true);
+
+  const sendEmail = async (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        e.target,
-        EMAILJS_PUBLIC_KEY,
-      )
-      .then(
-        () => toast.success("Message sent successfully!"),
-        () => toast.error("Something went wrong. Please try again."),
-      );
-    e.target.reset();
+    setLoading(true);
+
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY);
+      toast.success("Message sent! I'll get back to you soon.");
+      e.target.reset();
+    } catch {
+      toast.error("Something went wrong — please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <section id="contact" className="section-wrapper">
+    <section id="contact" className="section-wrapper !overflow-visible">
       <SectionHeader title="Contact" dir="l" />
-      <Reveal width="100%">
-        <form
-          onSubmit={sendEmail}
-          className="grid gap-8 sm:grid-cols-2"
-          noValidate
-        >
-          <div>
-            <label
-              htmlFor="fullName"
-              className={`inline-block text-white mb-2 ${styles.text}`}
-            >
-              Name
-            </label>
-            <input
-              id="fullName"
-              type="text"
-              name="fullName"
-              className={inputClass}
-              required
-              autoComplete="name"
-            />
-          </div>
 
-          <div>
-            <label
-              htmlFor="email"
-              className={`inline-block text-white mb-2 ${styles.text}`}
-            >
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              className={inputClass}
-              required
-              autoComplete="email"
-            />
-          </div>
+      <div className={styles.contactSection}>
+        <Reveal width="100%">
+          <SocialsBlock />
+        </Reveal>
 
-          <div className="sm:col-span-2">
-            <label
-              htmlFor="message"
-              className={`inline-block text-white mb-2 ${styles.text}`}
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              className={`${inputClass} h-52`}
-              required
-            />
-          </div>
+        <Reveal width="100%">
+          <form className={styles.contactForm} onSubmit={sendEmail}>
+            <div className={styles.inputGroupRow}>
+              <div>
+                <label className={styles.label}>Name</label>
+                <input
+                  className={styles.input}
+                  type="text"
+                  name="fullName"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div>
+                <label className={styles.label}>Email</label>
+                <input
+                  className={styles.input}
+                  type="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+            </div>
 
-          <div className="flex items-center justify-between sm:col-span-2">
-            <StandardButton type="submit">
-              <BiPaperPlane
-                size="2.2rem"
-                className="inline mx-1"
-                aria-hidden="true"
-              />{" "}
-              Send
-            </StandardButton>
-          </div>
-        </form>
-      </Reveal>
+            <div>
+              <label className={styles.label}>Subject</label>
+              <input
+                className={styles.input}
+                type="text"
+                name="subject"
+                placeholder="What's this about?"
+              />
+            </div>
+
+            <div>
+              <label className={styles.label}>Message</label>
+              <textarea
+                className={styles.textarea}
+                name="message"
+                rows={5}
+                placeholder="Tell me about your project..."
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              disabled={loading}
+            >
+              {loading ? (
+                <BiLoaderAlt className="text-3xl animate-spin" />
+              ) : (
+                <BiPaperPlane className="text-4xl" />
+              )}
+              <span>{loading ? "Sending..." : "Send message"}</span>
+            </button>
+          </form>
+        </Reveal>
+      </div>
     </section>
   );
 };

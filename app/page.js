@@ -13,12 +13,12 @@ export default function Home() {
     <ScrollIndicator>
       <div className="grid [grid-template-columns:60px_1fr]">
         <SideBar />
-        <main>
+        <main className="min-w-0">
           <Heading />
           <Hero />
           <About />
           <Projects />
-          {/* <Testimonial /> */}
+          <Testimonial />
           <Contact />
           <Footer />
         </main>

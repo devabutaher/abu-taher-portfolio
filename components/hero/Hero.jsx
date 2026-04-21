@@ -11,7 +11,7 @@ export const Hero = () => {
     <section
       id="hero"
       className="px-4 section-wrapper sm:px-6"
-      aria-label="Hero section"
+      aria-label="Hero Section"
     >
       <div
         className={`${styles.copyWrapper} flex flex-col justify-between items-center md:flex-row-reverse gap-10 md:gap-16`}

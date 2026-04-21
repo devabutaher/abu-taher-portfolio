@@ -7,7 +7,7 @@ import { Stats } from "./Stats";
 
 export const About = () => {
   return (
-    <section id="about" className="section-wrapper">
+    <section id="about" className="section-wrapper" aria-label="About Section">
       <SectionHeader title="About" dir="l" />
       <div className={styles.about}>
         <div>

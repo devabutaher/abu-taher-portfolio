@@ -13,6 +13,10 @@
   /* Slate 950 */
   --text: oklch(92.9% 0.013 255.508);
   /* Slate 200 */
+  --text-dark: oklch(70.4% 0.04 256.788);
+  /* Slate 400 */
+  --text-darker: oklch(44.6% 0.043 257.281);
+  /* Slate 600 */
   --brand: #8b5cf6;
   /* Violet 500 */
 
@@ -55,13 +59,13 @@ a {
   z-index: 10;
   max-width: 1150px;
   margin: auto;
-  padding: 9rem 0;
+  padding: 9rem 1rem;
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .section-wrapper {
-    padding: 4rem 1.5rem;
+    padding: 5rem 1.5rem;
   }
 }
 
