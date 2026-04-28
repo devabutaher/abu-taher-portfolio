@@ -1,9 +1,6 @@
 {
   "name": "abu-taher-portfolio",
   "version": "0.1.0",
-  "engines": {
-    "node": "24.0.0"
-  },
   "private": true,
   "scripts": {
     "dev": "next dev",
