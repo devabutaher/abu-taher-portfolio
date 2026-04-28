@@ -1,13 +1,14 @@
 "use client";
 
-import styles from "./projectmodal.module.scss";
-import { useEffect } from "react";
-import ReactDOM from "react-dom";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import ReactDOM from "react-dom";
 import { AiFillGithub, AiOutlineExport } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
+import styles from "./projectmodal.module.scss";
+import projectImg from "/assets/project.png";
 
 export const ProjectModal = ({
   modalContent,
@@ -53,7 +54,7 @@ export const ProjectModal = ({
       >
         <Image
           className={styles.modalImage}
-          src="/orbit_zone.png"
+          src={projectImg}
           alt={`Screenshot of the ${title} project`}
           width={800}
           height={500}

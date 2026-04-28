@@ -1,80 +1,69 @@
 export const PROJECTS = [
   {
-    title: "Paint.app",
-    imgSrc: "",
-    code: "https://www.github.com",
-    projectLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    tech: ["Flutter", "MUI", "Python", "FastAPI"],
+    title: "EcoTrack",
+    imgSrc: "/project.png",
+    code: "https://github.com/devabutaher/",
+    projectLink: "https://ecotrack-demo.vercel.app",
+    tech: ["NextJS", "Tailwind", "Supabase", "Chart.js"],
     description:
-      "A real-time coaching app for students learning to paint. Designed and built solo from the ground up.",
+      "A personal carbon footprint tracker that visualizes daily consumption habits through interactive dashboards.",
     modalContent: (
       <>
         <p>
-          Paint.app is a real-time coaching app for students learning to paint.
-          This app is my baby, designed and built on my own.
+          EcoTrack helps users monitor and reduce their environmental impact.
+          The application features complex data visualization and real-time
+          tracking.
         </p>
         <p>
-          The tech stack is built on Flutter for the mobile app, connected to a
-          Python & FastAPI backend, with data stored in Postgres, deployed on
-          Heroku.
+          The frontend is built with Next.js and Tailwind CSS for a sleek,
+          responsive UI. I used Supabase for authentication and database
+          management, allowing for instant updates across devices.
         </p>
       </>
     ),
   },
   {
-    title: "The Canvas Club",
-    imgSrc: "",
-    code: "https://www.github.com",
-    projectLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    tech: ["Node", "Express", "Postgres", "Kafka", "Redis"],
+    title: "StreamSync",
+    imgSrc: "/project.png",
+    code: "https://github.com/devabutaher/",
+    projectLink: "https://streamsync-live.com",
+    tech: ["React", "Socket.io", "WebRTC", "Node"],
     description:
-      "A social community for painters to connect with others. I handle all backend work (50K monthly active users).",
+      "A real-time watch party platform where users can sync video playback and video chat simultaneously.",
     modalContent: (
       <>
         <p>
-          The Canvas Club is a social community for painters to connect with
-          others in their community.
+          StreamSync solves the problem of "3-2-1-Play" by automating
+          synchronization between users watching the same content.
         </p>
         <p>
-          I work primarily on the backend — a collection of Node & Express
-          microservices. Data lives in Postgres and is cached in Redis.
-        </p>
-        <p>
-          The team consists of 5 developers, all passionate about this project.
+          I implemented Socket.io for low-latency state synchronization and used
+          WebRTC for the peer-to-peer video calling feature. The backend is a
+          highly scalable Node.js server designed to handle thousands of
+          concurrent rooms.
         </p>
       </>
     ),
   },
   {
-    title: "BrushWire",
-    imgSrc: "",
-    code: "https://www.github.com",
-    projectLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    tech: ["NextJS", "Java", "Spring", "AWS Aurora"],
+    title: "ArchiVault",
+    imgSrc: "/project.png",
+    code: "https://github.com/devabutaher/",
+    projectLink: "https://archivault.io",
+    tech: ["TypeScript", "GraphQL", "Prisma", "Docker"],
     description:
-      "Think Zapier but for paint. Built with a team of four and scaled to over 1 billion requests per day.",
+      "An enterprise-grade document management system with automated indexing and advanced search capabilities.",
     modalContent: (
       <>
         <p>
-          BrushWire is essentially Zapier but for paint. Built with a team of
-          four college friends and scaled to &gt; 1 billion requests per day.
+          ArchiVault was built to handle high volumes of PDF documentation for
+          engineering firms, featuring a robust permission system.
         </p>
-      </>
-    ),
-  },
-  {
-    title: "ScheduPlannr",
-    imgSrc: "",
-    code: "https://www.github.com",
-    projectLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    tech: ["Python", "FastAPI", "SQLAlchemy"],
-    description:
-      "A scheduling and planning tool that helps teams stay organised and on top of their workload.",
-    modalContent: (
-      <>
         <p>
-          ScheduPlannr is a full-stack scheduling tool built with Python &
-          FastAPI on the backend, and a clean React frontend.
+          The project utilizes a GraphQL API for efficient data fetching and
+          Prisma as the ORM to interact with a PostgreSQL database. The entire
+          environment is containerized using Docker for seamless deployment and
+          scaling.
         </p>
       </>
     ),

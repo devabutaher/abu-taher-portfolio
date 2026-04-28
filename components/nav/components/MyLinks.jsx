@@ -27,6 +27,7 @@ export const MyLinks = () => {
       {LINKS.map(({ href, Icon, label }, i) => (
         <Link
           href={href}
+          key={label}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}

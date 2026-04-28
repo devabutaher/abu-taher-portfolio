@@ -71,7 +71,7 @@ const SocialsBlock = () => (
 );
 
 const Contact = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const sendEmail = async (e) => {
     e.preventDefault();

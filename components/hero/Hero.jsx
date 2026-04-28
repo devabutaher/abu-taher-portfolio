@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/utils/Reveal";
 import Image from "next/image";
-import profile from "../../assets/profile1.png";
+import profile from "../../assets/profile.png";
 import ContactButton from "./ContactButton";
 import { DrawCircle } from "./DrawCircle";
 import styles from "./hero.module.scss";

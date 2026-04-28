@@ -1,13 +1,14 @@
 "use client";
 
 import { Reveal } from "@/components/utils/Reveal";
-import { useAnimation, useInView, motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AiFillGithub, AiOutlineExport } from "react-icons/ai";
-import styles from "./projects.module.scss";
 import { ProjectModal } from "./ProjectModal";
+import styles from "./projects.module.scss";
+import projectImg from "/assets/project.png";
 
 export const Project = ({ project }) => {
   const { title, code, projectLink, tech, description, modalContent } = project;
@@ -44,7 +45,7 @@ export const Project = ({ project }) => {
           aria-label={`Open details for ${title}`}
         >
           <Image
-            src="/orbit_zone.png"
+            src={projectImg}
             alt={`Screenshot of the ${title} project`}
             width={600}
             height={400}
@@ -97,7 +98,7 @@ export const Project = ({ project }) => {
               <button
                 type="button"
                 onClick={() => setIsOpen(true)}
-                className="underline underline-offset-2 hover:text-brand transition-colors"
+                className="underline transition-colors underline-offset-2 hover:text-brand"
               >
                 Learn more &gt;
               </button>
