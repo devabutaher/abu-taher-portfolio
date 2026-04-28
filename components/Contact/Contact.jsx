@@ -70,7 +70,7 @@ const SocialsBlock = () => (
   </div>
 );
 
-const Contact = () => {
+export const Contact = () => {
   const [loading, setLoading] = useState(false);
 
   const sendEmail = async (e) => {
@@ -161,5 +161,3 @@ const Contact = () => {
     </section>
   );
 };
-
-export default Contact;

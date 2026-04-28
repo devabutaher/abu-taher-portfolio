@@ -8,7 +8,7 @@ import { FaQuoteRight } from "react-icons/fa";
 import { Reveal } from "../utils/Reveal";
 import { SectionHeader } from "../utils/SectionHeader";
 
-const Testimonial = () => {
+export const Testimonial = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -127,5 +127,3 @@ const Testimonial = () => {
     </section>
   );
 };
-
-export default Testimonial;

@@ -18,7 +18,7 @@ const NAV = [
   { href: "#contact", label: "Contact" },
 ];
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="border-t border-[var(--background-light)] bg-[var(--background-dark)]">
       <div className="!py-12 section-wrapper">
@@ -114,5 +114,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

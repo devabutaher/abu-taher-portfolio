@@ -2,7 +2,7 @@
 
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 
-export default function ScrollIndicator({ children }) {
+export function ScrollIndicator({ children }) {
   const progress = useScrollProgress();
 
   return (
