@@ -1,22 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("hero");
+  const sectionIdsRef = useRef([]);
 
   useEffect(() => {
     const sections = document.querySelectorAll(".section-wrapper");
+    sectionIdsRef.current = Array.from(sections).map((s) => s.id);
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => {
+            const aIdx = sectionIdsRef.current.indexOf(a.target.id);
+            const bIdx = sectionIdsRef.current.indexOf(b.target.id);
+            return aIdx - bIdx;
+          });
+
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
       },
-      { threshold: 0.3 },
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
     );
 
     sections.forEach((section) => observer.observe(section));

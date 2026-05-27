@@ -1,44 +1,49 @@
+@use "../shared/glass-card" as *;
+
 .outlineButton {
+  font-family: var(--font-outfit), sans-serif;
   outline: none;
-  border: none;
+  border: 1px solid rgba(139, 92, 246, 0.3);
   cursor: pointer;
-  padding: 1.2rem 2.4rem;
+  padding: 1rem 2.4rem;
 
   @media (max-width: 768px) {
-    padding: 0.8rem 1rem;
+    padding: 0.4rem 1.8rem;
   }
 
-  border: 1px solid var(--brand);
-  background: transparent;
+  background: rgba(139, 92, 246, 0.04);
   color: var(--brand);
-  font-size: var(--text-sm);
-  border-radius: 4px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 0.8rem;
   position: relative;
   z-index: 20;
   overflow: hidden;
-  transition: 0.2s color;
-}
+  backdrop-filter: blur(8px);
 
-.outlineButton::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--brand);
+  @include glass-card-hover($sheen-opacity: 0.06, $gradient-opacity: 0.09);
 
-  height: 100%;
-  width: 100%;
+  &:hover {
+    background: var(--brand);
+    color: var(--text);
+    transform: translateY(-2px);
+  }
 
-  left: -100%;
-  top: -100%;
+  // Re-introducing the slide-in fill for extra depth
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.1);
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    top: -100%;
+    transition: 0.3s left, 0.3s top;
+  }
 
-  transition: 0.2s left, 0.2s top;
-}
-
-.outlineButton:hover {
-  color: var(--text);
-}
-
-.outlineButton:hover::before {
-  left: 0;
-  top: 0;
+  &:hover::before {
+    left: 0;
+    top: 0;
+  }
 }

@@ -3,11 +3,11 @@
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
 
 import { BiLoaderAlt, BiPaperPlane } from "react-icons/bi";
 import { SiGithub, SiTiktok, SiTwitter, SiYoutube } from "react-icons/si";
 
+import { NotificationContainer } from "../shared/Notification";
 import { Reveal } from "../utils/Reveal";
 import { SectionHeader } from "../utils/SectionHeader";
 import styles from "./contact.module.scss";
@@ -22,7 +22,7 @@ const Block = ({ className = "", children, ...rest }) => (
       initial: { scale: 0.5, y: 50, opacity: 0 },
       animate: { scale: 1, y: 0, opacity: 1 },
     }}
-    transition={{ type: "spring", mass: 3, stiffness: 400, damping: 50 }}
+    transition={{ type: "spring", mass: 1, stiffness: 300, damping: 30 }}
     className={`${styles.socialBlock} ${className}`}
     {...rest}
   >
@@ -34,36 +34,36 @@ const SocialsBlock = () => (
   <div className={styles.socialGrid}>
     <Block
       whileHover={{ rotate: "2.5deg", scale: 1.05 }}
-      className="bg-red-500"
+      className={styles.socialCard}
     >
-      <a href="#">
+      <a href="#" aria-label="YouTube">
         <SiYoutube />
       </a>
     </Block>
 
     <Block
       whileHover={{ rotate: "-2.5deg", scale: 1.05 }}
-      className="bg-green-600"
+      className={styles.socialCard}
     >
-      <a href="#">
+      <a href="#" aria-label="GitHub">
         <SiGithub />
       </a>
     </Block>
 
     <Block
       whileHover={{ rotate: "-2.5deg", scale: 1.05 }}
-      className={`${styles.tiktok} bg-zinc-50`}
+      className={styles.socialCard}
     >
-      <a href="#">
+      <a href="#" aria-label="TikTok">
         <SiTiktok />
       </a>
     </Block>
 
     <Block
       whileHover={{ rotate: "2.5deg", scale: 1.05 }}
-      className="bg-blue-500"
+      className={styles.socialCard}
     >
-      <a href="#">
+      <a href="#" aria-label="Twitter">
         <SiTwitter />
       </a>
     </Block>
@@ -72,6 +72,16 @@ const SocialsBlock = () => (
 
 export const Contact = () => {
   const [loading, setLoading] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+
+  const addNotification = (type, text) => {
+    const id = Date.now() + Math.random();
+    setNotifications((pv) => [{ id, type, text }, ...pv]);
+  };
+
+  const removeNotif = (id) => {
+    setNotifications((pv) => pv.filter((n) => n.id !== id));
+  };
 
   const sendEmail = async (e) => {
     e.preventDefault();
@@ -79,10 +89,10 @@ export const Contact = () => {
 
     try {
       await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY);
-      toast.success("Message sent! I'll get back to you soon.");
+      addNotification("success", "Message sent! I'll get back to you soon.");
       e.target.reset();
     } catch {
-      toast.error("Something went wrong — please try again.");
+      addNotification("error", "Something went wrong — please try again.");
     } finally {
       setLoading(false);
     }
@@ -91,13 +101,17 @@ export const Contact = () => {
   return (
     <section id="contact" className="section-wrapper !overflow-visible">
       <SectionHeader title="Contact" dir="l" />
+      <NotificationContainer
+        notifications={notifications}
+        removeNotif={removeNotif}
+      />
 
       <div className={styles.contactSection}>
-        <Reveal width="100%">
+        <Reveal width="100%" delay={0.1}>
           <SocialsBlock />
         </Reveal>
 
-        <Reveal width="100%">
+        <Reveal width="100%" delay={0.3}>
           <form className={styles.contactForm} onSubmit={sendEmail}>
             <div className={styles.inputGroupRow}>
               <div>
@@ -161,3 +175,5 @@ export const Contact = () => {
     </section>
   );
 };
+
+export default Contact;

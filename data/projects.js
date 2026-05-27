@@ -1,7 +1,9 @@
+import img from "/assets/projects/ecotrack.png";
+
 export const PROJECTS = [
   {
     title: "EcoTrack",
-    imgSrc: "/project.png",
+    imgSrc: img,
     code: "https://github.com/devabutaher/",
     projectLink: "https://ecotrack-demo.vercel.app",
     tech: ["NextJS", "Tailwind", "Supabase", "Chart.js"],
@@ -24,7 +26,7 @@ export const PROJECTS = [
   },
   {
     title: "StreamSync",
-    imgSrc: "/project.png",
+    imgSrc: "/assets/projects/streamsync.png",
     code: "https://github.com/devabutaher/",
     projectLink: "https://streamsync-live.com",
     tech: ["React", "Socket.io", "WebRTC", "Node"],
@@ -47,7 +49,7 @@ export const PROJECTS = [
   },
   {
     title: "ArchiVault",
-    imgSrc: "/project.png",
+    imgSrc: "/assets/projects/archivault.png",
     code: "https://github.com/devabutaher/",
     projectLink: "https://archivault.io",
     tech: ["TypeScript", "GraphQL", "Prisma", "Docker"],

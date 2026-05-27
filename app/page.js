@@ -1,28 +1,53 @@
+import dynamic from "next/dynamic";
 import { About } from "@/components/about/About";
-import { Contact } from "@/components/contact/Contact";
-import { Footer } from "@/components/footer/Footer";
 import { Hero } from "@/components/hero/Hero";
 import { Heading } from "@/components/nav/Heading";
 import { SideBar } from "@/components/nav/SideBar";
 import { Projects } from "@/components/projects/Projects";
 import { ScrollIndicator } from "@/components/scroll/Scroll";
-import { Testimonial } from "@/components/testimonial/Testimonial";
+
+// Dynamic imports for heavy components — loaded only when needed
+const AuroraBackground = dynamic(
+  () => import("@/components/hero/AuroraBackground"),
+  { ssr: false },
+);
+
+const TechMarquee = dynamic(
+  () => import("@/components/marquee/TechMarquee"),
+);
+
+const Experience = dynamic(
+  () => import("@/components/experience/Experience"),
+);
+
+const Testimonial = dynamic(
+  () => import("@/components/testimonial/Testimonial"),
+);
+
+const Contact = dynamic(
+  () => import("@/components/Contact/Contact"),
+);
+
+const Footer = dynamic(
+  () => import("@/components/Footer/Footer"),
+);
 
 export default function Home() {
   return (
     <ScrollIndicator>
-      <div className="grid [grid-template-columns:60px_1fr]">
-        <SideBar />
-        <main className="min-w-0">
-          <Heading />
-          <Hero />
-          <About />
-          <Projects />
-          <Testimonial />
-          <Contact />
-          <Footer />
-        </main>
-      </div>
+      <AuroraBackground />
+      <SideBar />
+      <Heading />
+      <main className="min-w-0 pl-[48px] pt-[50px] md:pl-[60px] md:pt-[70px]">
+        <Hero />
+        <About />
+        <TechMarquee />
+        <Projects />
+        <Experience />
+        <Testimonial />
+        <Contact />
+        <Footer />
+      </main>
     </ScrollIndicator>
   );
 }

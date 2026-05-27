@@ -11,31 +11,45 @@ export const About = () => {
       <SectionHeader title="About" dir="l" />
       <div className={styles.about}>
         <div>
-          <Reveal>
+          <Reveal direction="left">
             <p className={`${styles.aboutText} ${styles.highlightFirstLetter}`}>
               Hey! I&apos;m Abu Taher, I&apos;ve successfully completed several
-              projects that showcase my ability to leverage these technologies
-              effectively. Working individually or as part of a team, I&apos;ve
-              gained valuable experience in collaborating on team and delivering
-              awesome projects.
+              projects that showcase my ability to{" "}
+              <span className={styles.highlight}>
+                leverage these technologies effectively
+              </span>
+              . Working individually or as part of a team, I&apos;ve gained
+              valuable experience in{" "}
+              <span className={styles.highlight}>
+                collaborating on team and delivering awesome projects
+              </span>
+              .
             </p>
           </Reveal>
-          <Reveal>
+          <Reveal direction="up" delay={0.35}>
             <p className={styles.aboutText}>
-              I&apos;ve a deep passion for learning and staying updated with the
-              latest technologies in order to drive growth and deliver
-              exceptional results.
+              I&apos;ve a{" "}
+              <span className={styles.highlight}>
+                deep passion for learning
+              </span>{" "}
+              and staying updated with the latest technologies in order to{" "}
+              <span className={styles.highlight}>
+                drive growth and deliver exceptional results
+              </span>
+              .
             </p>
           </Reveal>
-          <Reveal>
+          <Reveal direction="up" delay={0.45}>
             <p className={styles.aboutText}>
               I&apos;m eager to contribute my skills to a dynamic and innovative
-              company. Seeking an opportunity to join a supportive team where I
+              company. Seeking an opportunity to join a{" "}
+              <span className={styles.highlight}>supportive team</span> where I
               can further enhance my skills, contribute to meaningful projects,
-              and advance my career in web development.
+              and advance my career in{" "}
+              <span className={styles.highlight}>web development</span>.
             </p>
           </Reveal>
-          <Reveal>
+          <Reveal direction="scale" delay={0.55}>
             <div className={styles.links}>
               <div className={styles.linksText}>
                 <span>My links</span>

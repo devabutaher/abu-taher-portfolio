@@ -1,3 +1,5 @@
+@use "../shared/glass-card" as *;
+
 .stats {
   position: relative;
 }
@@ -7,9 +9,10 @@
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+    font-family: var(--font-outfit), sans-serif;
     span {
       font-size: var(--text-md);
-      font-weight: bold;
+      font-weight: 700;
       position: relative;
       margin-left: 0.8rem;
     }
@@ -19,6 +22,29 @@
 .statGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
-  margin-bottom: 3rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 4px;
+}
+
+.skillChip {
+  font-size: var(--text-xs);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+  color: var(--text);
+  cursor: default;
+  display: inline-block;
+  white-space: nowrap;
+  position: relative;
+  z-index: 10;
+
+  // Glass design consistency
+  @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 }

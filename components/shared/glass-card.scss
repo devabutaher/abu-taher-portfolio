@@ -1,0 +1,62 @@
+@mixin glass-card-hover($sheen-opacity: 0.05, $gradient-opacity: 0.08) {
+  position: relative;
+  overflow: hidden;
+  border-radius: inherit;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease,
+    background 0.4s ease, transform 0.4s ease;
+
+  // Glass gradient overlay — fades in on hover
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(139, 92, 246, $gradient-opacity) 0%,
+      rgba(99, 102, 241, $gradient-opacity * 0.5) 50%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Glass sheen sweep — slides across on hover
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      105deg,
+      transparent,
+      rgba(255, 255, 255, $sheen-opacity),
+      transparent
+    );
+    transform: skewX(-15deg);
+    transition: left 0.7s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &:hover {
+    border-color: rgba(139, 92, 246, 0.45);
+    background: rgba(139, 92, 246, 0.06);
+    box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.15),
+      0 8px 32px rgba(139, 92, 246, 0.12), 0 24px 48px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    transform: translateY(-4px);
+
+    &::before {
+      opacity: 1;
+    }
+
+    &::after {
+      left: 130%;
+    }
+  }
+}

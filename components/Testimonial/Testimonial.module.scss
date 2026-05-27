@@ -1,0 +1,20 @@
+@use "../shared/glass-card" as *;
+
+.testimonialCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 2.4rem;
+  background: var(--background-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.2rem;
+  position: relative;
+
+  @include glass-card-hover(0.04, 0.06);
+
+  @media (min-width: 640px) {
+    padding: 2.4rem;
+  }
+}

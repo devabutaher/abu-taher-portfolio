@@ -32,7 +32,7 @@ export const MyLinks = () => {
           rel="noopener noreferrer"
           aria-label={label}
         >
-          <Icon size="2.8rem" aria-hidden="true" />
+          <Icon size="1.8rem" aria-hidden="true" />
         </Link>
       ))}
     </div>

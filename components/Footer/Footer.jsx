@@ -7,8 +7,8 @@ import { SiFacebook } from "react-icons/si";
 
 const SOCIAL = [
   { href: SOCIAL_LINKS.github, Icon: AiFillGithub, label: "GitHub" },
-  { href: SOCIAL_LINKS.facebook, Icon: SiFacebook, label: "Facebook" },
   { href: SOCIAL_LINKS.linkedin, Icon: AiFillLinkedin, label: "LinkedIn" },
+  { href: SOCIAL_LINKS.facebook, Icon: SiFacebook, label: "Facebook" },
 ];
 
 const NAV = [
@@ -20,7 +20,7 @@ const NAV = [
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-[var(--background-light)] bg-[var(--background-dark)]">
+    <footer className="border-t border-[var(--border-subtle)] bg-[var(--background-card)] backdrop-blur-md">
       <div className="!py-12 section-wrapper">
         {/* ── Top row: 3 columns ── */}
         <div className="grid grid-cols-1 gap-10 mb-10 sm:grid-cols-3">
@@ -33,7 +33,7 @@ export const Footer = () => {
                 width={30}
                 height={30}
               />
-              <span className="text-[2rem] font-bold [var(--text)]">
+              <span className="text-[2rem] font-bold font-heading text-[var(--text)]">
                 Abu Taher
               </span>
             </div>
@@ -88,10 +88,10 @@ export const Footer = () => {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-[var(--background-lighter)]">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-[var(--border-subtle)]">
           <p className="text-[1.4rem] text-[var(--text-dark)] text-center sm:text-left">
-            © {new Date().getFullYear()} Abu Taher · Built with Next.js,
-            Tailwind CSS & Framer Motion
+            © {new Date().getFullYear()} Abu Taher · Built with Next.js, Sass &
+            Framer Motion
           </p>
 
           {/* Back to top */}
@@ -99,10 +99,10 @@ export const Footer = () => {
             href="#"
             aria-label="Back to top"
             className="
-              flex items-center gap-2 text-[1.4rem] font-medium
-              text-[var(--text-dark)] hover:text-[var(--brand)]
-              transition-colors duration-200 group
-            "
+                flex items-center gap-2 text-[1.4rem] font-medium
+                text-[var(--text-dark)] hover:text-[var(--brand)]
+                transition-colors duration-200 group
+              "
           >
             Back to top
             <span className="flex items-center justify-center w-8 h-8 transition-colors duration-200 rounded-full">
@@ -114,3 +114,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

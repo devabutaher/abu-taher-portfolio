@@ -1,19 +1,21 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Reveal } from "@/components/utils/Reveal";
 import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AiFillGithub, AiOutlineExport } from "react-icons/ai";
-import { ProjectModal } from "./ProjectModal";
 import styles from "./projects.module.scss";
-import projectImg from "/assets/project.png";
 
-export const Project = ({ project }) => {
-  const { title, code, projectLink, tech, description, modalContent } = project;
+const ProjectModal = dynamic(
+  () => import("./ProjectModal").then((m) => m.ProjectModal),
+);
 
-  const [hovered, setHovered] = useState(false);
+export const Project = ({ project, index = 0 }) => {
+  const { title, imgSrc, code, projectLink, tech, description, modalContent } = project;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const controls = useAnimation();
@@ -34,28 +36,23 @@ export const Project = ({ project }) => {
         }}
         initial="hidden"
         animate={controls}
-        transition={{ duration: 0.75 }}
+        transition={{ duration: 0.75, delay: index * 0.15 }}
+        className={styles.projectCard}
       >
         <button
           type="button"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
           onClick={() => setIsOpen(true)}
           className={styles.projectImage}
           aria-label={`Open details for ${title}`}
         >
           <Image
-            src={projectImg}
+            src={imgSrc}
             alt={`Screenshot of the ${title} project`}
             width={600}
             height={400}
-            style={{
-              width: hovered ? "90%" : "85%",
-              height: "auto",
-              rotate: hovered ? "2deg" : "0deg",
-              transition: "width 0.2s, rotate 0.2s",
-            }}
+            className={styles.projectImg}
           />
+          <div className={styles.cardGlow} />
         </button>
 
         <div className={styles.projectCopy}>
@@ -82,15 +79,15 @@ export const Project = ({ project }) => {
             </div>
           </Reveal>
 
-          <Reveal>
-            <div className={styles.projectTech}>
-              {tech.map((t) => (
-                <span key={t} className="chip">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </Reveal>
+            <Reveal>
+              <div className={styles.projectTech}>
+                {tech.map((t) => (
+                  <span key={t} className={styles.chip}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
 
           <Reveal>
             <p className={styles.projectDescription}>
@@ -98,7 +95,7 @@ export const Project = ({ project }) => {
               <button
                 type="button"
                 onClick={() => setIsOpen(true)}
-                className="underline transition-colors underline-offset-2 hover:text-brand"
+                className={styles.learnMoreBtn}
               >
                 Learn more &gt;
               </button>
@@ -115,6 +112,7 @@ export const Project = ({ project }) => {
         title={title}
         code={code}
         tech={tech}
+        imgSrc={imgSrc}
       />
     </>
   );

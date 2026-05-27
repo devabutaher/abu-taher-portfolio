@@ -4,7 +4,8 @@ import { Typewriter } from "react-simple-typewriter";
 
 const RoleTypeWriter = () => {
   const ROLES = [
-    "React Developer",
+    "React.js Developer",
+    "Next.js Developer",
     "Front-End Developer",
     "MERN Stack Developer",
   ];

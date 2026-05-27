@@ -10,52 +10,56 @@ export const Hero = () => {
   return (
     <section
       id="hero"
-      className="px-4 section-wrapper sm:px-6"
+      className="relative px-4 section-wrapper sm:px-6"
       aria-label="Hero Section"
     >
       <div
-        className={`${styles.copyWrapper} flex flex-col justify-between items-center md:flex-row-reverse gap-10 md:gap-16`}
+        className={`${styles.copyWrapper} relative flex flex-col md:flex-row-reverse items-center justify-between gap-10`}
       >
         {/* Image */}
-        <Reveal>
-          <div className="flex justify-center">
+        <Reveal direction="scale" delay={0.1}>
+          <div className="flex justify-center flex-shrink-0">
             <Image
-              className="w-[180px] sm:w-[240px] md:w-[300px] lg:w-[34rem] h-auto rounded-full"
+              className="w-[200px] sm:w-[280px] md:w-[340px] lg:w-[38rem] h-auto rounded-full"
               src={profile}
               alt="Portrait of Abu Taher, MERN stack developer"
               priority
               placeholder="blur"
               quality={85}
-              sizes="(max-width: 768px) 60vw, (max-width: 1024px) 35vw, 34rem"
+              sizes="(max-width: 768px) 60vw, (max-width: 1024px) 35vw, 35rem"
             />
           </div>
         </Reveal>
 
         {/* Content */}
-        <div>
-          <Reveal>
+        <div className="flex flex-col justify-center flex-1 py-8">
+          <Reveal direction="right" delay={0.2} clipOverflow={false}>
             <h1 className={`${styles.title} py-4`}>
               Hey, I&apos;m <DrawCircle />
-              <span>.</span>
             </h1>
           </Reveal>
 
-          <Reveal>
+          <Reveal direction="right" delay={0.3}>
             <h2 className={styles.subTitle}>
               <RoleTypeWriter />
             </h2>
           </Reveal>
 
-          <Reveal>
+          <Reveal direction="up" delay={0.4}>
             <p className={styles.aboutCopy}>
-              I&apos;m equipped to build scalable and efficient web
-              applications. Having successfully completed multiple projects with
-              a focus on team collaboration, project management, and delivering
-              high-quality work.
+              I&apos;m equipped to build{" "}
+              <span className={styles.highlight}>
+                scalable and efficient web applications
+              </span>
+              . Having successfully completed multiple projects with a focus on{" "}
+              <span className={styles.highlight}>
+                team collaboration, project management
+              </span>
+              , and delivering high-quality work.
             </p>
           </Reveal>
 
-          <Reveal>
+          <Reveal direction="up" delay={0.5}>
             <div className="py-4">
               <ContactButton />
             </div>

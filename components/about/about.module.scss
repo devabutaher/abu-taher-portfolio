@@ -9,12 +9,21 @@
 }
 
 .aboutText {
+  font-family: var(--font-plus-jakarta), sans-serif;
   font-size: var(--text-sm);
   margin-bottom: 2.4rem;
-  font-weight: 200;
+  font-weight: 300;
+  line-height: 1.7;
 
   @media (max-width: 768px) {
     font-size: var(--text-xs);
+  }
+
+  .highlight {
+    color: var(--brand);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
   }
 }
 
@@ -35,9 +44,11 @@
 }
 
 .highlightFirstLetter:first-letter {
-  background: var(--background-lighter);
-  padding: 1rem;
-  border-radius: 0.4rem;
+  background: var(--background-card);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 1rem;
+  border-radius: 0.6rem;
   font-size: var(--text-md);
   font-weight: bold;
   margin-right: 0.6rem;

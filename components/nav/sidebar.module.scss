@@ -1,20 +1,67 @@
 .sideBar {
-  background: var(--background-dark);
+  background: rgba(10, 10, 25, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  width: 60px;
   z-index: 20;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid var(--background-light);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(139, 92, 246, 0.05) 0%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(139, 92, 246, 0.2) 20%,
+      rgba(139, 92, 246, 0.3) 50%,
+      rgba(139, 92, 246, 0.2) 80%,
+      transparent
+    );
+    pointer-events: none;
+  }
 
   /* Remove scrollbar clutter */
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  .logoArea {
+    padding: 2rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   a {
@@ -33,12 +80,12 @@
     opacity: 0.6;
     color: var(--text);
     border-right: 2px solid transparent;
-    transition: 0.3s opacity ease;
+    transition: 0.3s opacity ease, 0.3s background-color ease;
   }
 
   a:hover,
   .selected {
-    background: var(--background-light);
+    background: rgba(139, 92, 246, 0.08);
     border-right: 2px solid var(--brand);
     opacity: 1;
   }
@@ -46,9 +93,20 @@
 
 @media (max-width: 768px) {
   .sideBar {
+    width: 48px;
+    
+    .logoArea {
+      padding: 1.5rem 0;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
     a {
-      padding: 16px 0;
-      font-size: 16px;
+      padding: 10px 0;
+      font-size: 13px;
       font-weight: 200;
       border-right: 1px solid transparent;
     }

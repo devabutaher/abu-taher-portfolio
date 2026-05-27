@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./header.module.scss";
 import { Reveal } from "./Reveal";
 
@@ -11,7 +9,7 @@ export const SectionHeader = ({ title, dir = "r" }) => {
     >
       <div className={styles.line} />
       <h3>
-        <Reveal>
+        <Reveal direction={dir === "r" ? "right" : "left"}>
           <span className={styles.title}>
             {title}
             <span>.</span>

@@ -6,9 +6,11 @@
 }
 
 .title {
+  font-family: var(--font-outfit), sans-serif;
   font-size: var(--text-xl);
-  font-weight: 900;
+  font-weight: 800;
   text-align: end;
+  letter-spacing: -0.02em;
 
   span {
     color: var(--brand);

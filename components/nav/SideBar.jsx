@@ -1,16 +1,17 @@
 "use client";
 
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { scrollToSection } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./sidebar.module.scss";
 
 const NAV_ITEMS = [
-  { id: "about", label: "About", delay: 0.1 },
-  { id: "projects", label: "Projects", delay: 0.2 },
-  { id: "experience", label: "Experience", delay: 0.3 },
-  { id: "testimonial", label: "Testimonial", delay: 0.4 },
-  { id: "contact", label: "Contact", delay: 0.5 },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "testimonial", label: "Testimonial" },
+  { id: "contact", label: "Contact" },
 ];
 
 export const SideBar = () => {
@@ -22,6 +23,11 @@ export const SideBar = () => {
     setActiveSection("hero");
   };
 
+  const handleNavClick = (id) => {
+    scrollToSection(id);
+    setActiveSection(id);
+  };
+
   return (
     <motion.nav
       initial={{ x: -70 }}
@@ -30,36 +36,30 @@ export const SideBar = () => {
       className={styles.sideBar}
       aria-label="Page sections"
     >
-      <div
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToTop();
-        }}
-        className="flex flex-col items-center py-10 cursor-pointer"
-      >
+      <div onClick={scrollToTop} className={styles.logoArea}>
         <Image
           src="/logo.png"
           alt="Abu Taher logo"
-          width={32}
-          height={32}
+          width={28}
+          height={28}
           priority
         />
       </div>
 
-      {NAV_ITEMS.map(({ id, label, delay }) => {
+      {NAV_ITEMS.map(({ id, label }, i) => {
         const isActive = activeSection === id;
         return (
           <motion.a
             key={id}
             href={`#${id}`}
             initial={{ opacity: 0, x: -20 }}
-            animate={{
-              x: 0,
-              opacity: isActive ? 1 : 0.6,
+            animate={{ opacity: isActive ? 1 : 0.6, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick(id);
             }}
-            transition={{ duration: 0.5, delay }}
-            onClick={() => setActiveSection(id)}
-            className={`${activeSection === id ? styles.selected : ""}`}
+            className={isActive ? styles.selected : ""}
           >
             {label}
           </motion.a>

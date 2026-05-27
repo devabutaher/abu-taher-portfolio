@@ -11,44 +11,57 @@
 }
 
 .title {
+  font-family: var(--font-outfit), sans-serif;
   font-size: var(--text-xl);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 
   span {
     color: var(--brand);
   }
 
   @media (max-width: 768px) {
-    font-size: var(--text-md);
+    font-size: var(--text-lg);
     font-weight: 700;
   }
 }
 
 .subTitle {
+  font-family: var(--font-plus-jakarta), sans-serif;
   font-size: var(--text-lg);
   line-height: 1.1;
-  margin-top: 1rem;
-  font-weight: 200;
+  margin: 1rem 0;
+  font-weight: 300;
+  letter-spacing: 0.01em;
 
   @media (max-width: 768px) {
-    font-size: var(--text-sm);
+    font-size: var(--text-md);
   }
 
   span {
-    font-weight: bold;
+    font-weight: 600;
     color: var(--brand);
   }
 }
 
 .aboutCopy {
-  font-size: var(--text-xs);
-  margin: 2rem 0;
-  max-width: 650px;
-  font-weight: 200;
-  
-  @media (min-width: 768px) {
-    font-size: var(--text-sm);
-    line-height: 1.8;
+  font-family: var(--font-plus-jakarta), sans-serif;
+  font-size: var(--text-sm);
+  @media (max-width: 768px) {
+    font-size: var(--text-xs);
+  }
+  color: var(--text-dark);
+  margin-bottom: 2.4rem;
+  line-height: 1.7;
+  max-width: 60rem;
+  text-align: left;
+
+  .highlight {
+    color: var(--brand);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
   }
 }

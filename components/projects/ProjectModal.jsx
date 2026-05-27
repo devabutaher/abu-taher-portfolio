@@ -8,7 +8,6 @@ import ReactDOM from "react-dom";
 import { AiFillGithub, AiOutlineExport } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 import styles from "./projectmodal.module.scss";
-import projectImg from "/assets/project.png";
 
 export const ProjectModal = ({
   modalContent,
@@ -18,6 +17,7 @@ export const ProjectModal = ({
   title,
   code,
   tech,
+  imgSrc,
 }) => {
   useEffect(() => {
     const body = document.body;
@@ -54,7 +54,7 @@ export const ProjectModal = ({
       >
         <Image
           className={styles.modalImage}
-          src={projectImg}
+          src={imgSrc}
           alt={`Screenshot of the ${title} project`}
           width={800}
           height={500}
