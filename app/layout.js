@@ -1,8 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { CustomCursor } from "@/components/cursor/CustomCursor";
-import { ScrollProgressBar } from "@/components/utils/ScrollProgressBar";
-import { BackToTop } from "@/components/utils/BackToTop";
 import "./globals.css";
 import "./design-system.css";
 
@@ -186,8 +184,6 @@ export default function RootLayout({ children }) {
         id="root"
         className={`${outfit.variable} ${plusJakarta.variable} font-sans`}
       >
-        <ScrollProgressBar />
-        <BackToTop />
         <CustomCursor />
         {children}
         <Analytics />

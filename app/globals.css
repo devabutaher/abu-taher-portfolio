@@ -171,30 +171,31 @@ a {
 }
 
 /* Custom Scrollbar */
-/* Firefox */
-* {
+html {
   scrollbar-width: thin;
   scrollbar-color: var(--brand) transparent;
+  overflow-y: scroll;
 }
 
 /* WebKit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a1a;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--brand);
-  border-radius: 10px;
-  transition: all 0.2s ease;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a78bfa;
+  background-clip: padding-box;
 }
 
 /* Accessibility Enhancements */

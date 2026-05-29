@@ -8,6 +8,7 @@ import { FaQuoteRight } from "react-icons/fa";
 import { Reveal } from "../utils/Reveal";
 import { SectionHeader } from "../utils/SectionHeader";
 import styles from "./Testimonial.module.scss";
+import { ParallaxWrapper } from "@/components/utils/ParallaxWrapper";
 
 export const Testimonial = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -43,9 +44,12 @@ export const Testimonial = () => {
 
   return (
     <section id="testimonial" className="section-wrapper">
-      <SectionHeader title="Testimonial" dir="r" />
+      <ParallaxWrapper offset={0.35}>
+        <SectionHeader title="Testimonial" dir="r" />
+      </ParallaxWrapper>
 
-      <div className="overflow-hidden" ref={emblaRef}>
+      <ParallaxWrapper offset={0.45}>
+        <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-0">
           {TESTIMONIALS.map(({ name, text, work }) => (
             <div
@@ -113,7 +117,8 @@ export const Testimonial = () => {
             }`}
           />
         ))}
-      </div>
+        </div>
+      </ParallaxWrapper>
     </section>
   );
 };

@@ -5,13 +5,17 @@ import { SectionHeader } from "@/components/utils/SectionHeader";
 import { EXPERIENCES } from "@/data/experience";
 import { motion } from "framer-motion";
 import styles from "./experience.module.scss";
+import { ParallaxWrapper } from "@/components/utils/ParallaxWrapper";
 
 export const Experience = () => {
   return (
     <section id="experience" className="section-wrapper">
-      <SectionHeader title="Experience" dir="l" />
+      <ParallaxWrapper offset={0.3}>
+        <SectionHeader title="Experience" dir="l" />
+      </ParallaxWrapper>
 
-      <div className={styles.timeline}>
+      <ParallaxWrapper offset={0.4}>
+        <div className={styles.timeline}>
         {EXPERIENCES.map((exp, i) => (
           <Reveal key={i} width="100%">
             <motion.div
@@ -52,7 +56,8 @@ export const Experience = () => {
             </motion.div>
           </Reveal>
         ))}
-      </div>
+        </div>
+      </ParallaxWrapper>
     </section>
   );
 };
