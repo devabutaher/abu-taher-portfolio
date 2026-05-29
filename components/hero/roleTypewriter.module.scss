@@ -1,0 +1,52 @@
+.typewriterWrapper {
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    var(--brand, #8b5cf6),
+    var(--accent-indigo, #5d4e99)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: var(--font-plus-jakarta), sans-serif;
+  font-size: inherit;
+  line-height: inherit;
+  animation: fadeIn 0.6s ease-in;
+
+  /* Premium cursor styling */
+  :global(.cursor) {
+    color: var(--brand, #8b5cf6);
+    animation: cursorBlink 1.2s steps(2, end) infinite;
+    margin-left: 4px;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes cursorBlink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+}

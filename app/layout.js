@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { CustomCursor } from "@/components/cursor/CustomCursor";
 import "./globals.css";
+import "./design-system.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -20,11 +21,11 @@ const BASE_URL = "https://abutaher.vercel.app";
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Abu Taher | MERN Stack Developer",
+    default: "Abu Taher | Premium MERN Stack Developer Portfolio",
     template: "%s | Abu Taher",
   },
   description:
-    "Abu Taher is a professional MERN stack developer specialising in building scalable, high-performance web applications with React, Next.js, and Node.js. Discover his latest projects and technical expertise.",
+    "Abu Taher is an elite MERN stack developer specializing in scalable, high-performance web applications. Expert in React, Next.js, Node.js, MongoDB, and modern web technologies. Explore award-winning portfolio projects.",
   keywords: [
     "Abu Taher",
     "MERN Stack Developer",
@@ -32,68 +33,141 @@ export const metadata = {
     "Next.js Expert",
     "Full Stack Engineer",
     "Node.js Developer",
-    "Portfolio",
+    "MongoDB Developer",
+    "JavaScript Expert",
+    "Web Developer Portfolio",
+    "Freelance Developer",
+    "Remote Developer",
     "Web Development Services",
+    "Frontend Developer",
+    "Backend Developer",
   ],
   authors: [{ name: "Abu Taher", url: BASE_URL }],
   creator: "Abu Taher",
+  publisher: "Abu Taher",
+  applicationName: "Abu Taher Portfolio",
+  referrer: "origin-when-cross-origin",
+  colorScheme: "dark light",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: BASE_URL,
-    siteName: "Abu Taher | Portfolio",
-    title: "Abu Taher | MERN Stack Developer",
+    siteName: "Abu Taher | MERN Stack Developer",
+    title: "Abu Taher | Premium MERN Stack Developer",
     description:
-      "Specialising in high-performance web applications using React, Next.js, and Node.js. View my professional portfolio.",
+      "Expert MERN stack developer specializing in scalable web applications. React, Next.js, Node.js, and MongoDB expertise.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Abu Taher — MERN Stack Developer Portfolio",
+        alt: "Abu Taher — Premium MERN Stack Developer Portfolio",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abu Taher | MERN Stack Developer",
+    site: "@abutaher",
+    creator: "@abutaher",
+    title: "Abu Taher | Premium MERN Stack Developer",
     description:
-      "Specialising in high-performance web applications using React, Next.js, and Node.js.",
+      "Expert in building scalable web applications using React, Next.js, Node.js, and MongoDB.",
     images: ["/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
       "max-image-preview": "large",
       "max-snippet": "-1",
+      "max-video-preview": "-1",
     },
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  category: "Technology",
+  classification: "Web Development, Portfolio",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Abu Taher",
+  },
+  formatDetection: {
+    email: false,
+    telephone: false,
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Abu Taher",
-  url: BASE_URL,
-  image: `${BASE_URL}/og-image.png`,
-  sameAs: [
-    "https://github.com/abutaher",
-    "https://linkedin.com/in/abutaher",
-    "https://facebook.com/abutaher",
-  ],
-  jobTitle: "MERN Stack Developer",
-  description:
-    "Specialising in scalable web applications using React, Next.js, and Node.js.",
-  knowsAbout: [
-    "React",
-    "Next.js",
-    "Node.js",
-    "MongoDB",
-    "TypeScript",
-    "Tailwind CSS",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${BASE_URL}#person`,
+      name: "Abu Taher",
+      url: BASE_URL,
+      image: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+      },
+      sameAs: [
+        "https://github.com/abutaher",
+        "https://linkedin.com/in/abutaher",
+        "https://twitter.com/abutaher",
+        "https://facebook.com/abutaher",
+      ],
+      jobTitle: "MERN Stack Developer",
+      email: "contact@abutaher.com",
+      description:
+        "Elite MERN stack developer specializing in scalable, high-performance web applications.",
+      knowsAbout: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "MongoDB",
+        "TypeScript",
+        "Tailwind CSS",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Web Development",
+      ],
+      givenName: "Abu",
+      familyName: "Taher",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${BASE_URL}#website`,
+      name: "Abu Taher Portfolio",
+      url: BASE_URL,
+      description: "Portfolio showcasing MERN stack development expertise",
+      creator: {
+        "@id": `${BASE_URL}#person`,
+      },
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${BASE_URL}#business`,
+      name: "Abu Taher Web Development",
+      url: BASE_URL,
+      image: `${BASE_URL}/og-image.png`,
+      description: "MERN Stack Development Services",
+      priceRange: "$$",
+    },
   ],
 };
 

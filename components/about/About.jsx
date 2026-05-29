@@ -4,12 +4,18 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { MyLinks } from "../nav/components/MyLinks";
 import styles from "./about.module.scss";
 import { Stats } from "./Stats";
+import { StatsCards } from "./StatsCards";
+import { ParallaxWrapper } from "@/components/utils/ParallaxWrapper";
 
 export const About = () => {
   return (
     <section id="about" className="section-wrapper" aria-label="About Section">
-      <SectionHeader title="About" dir="l" />
-      <div className={styles.about}>
+      <ParallaxWrapper offset={0.3}>
+        <SectionHeader title="About" dir="l" />
+        <StatsCards />
+      </ParallaxWrapper>
+      <ParallaxWrapper offset={0.4}>
+        <div className={styles.about}>
         <div>
           <Reveal direction="left">
             <p className={`${styles.aboutText} ${styles.highlightFirstLetter}`}>
@@ -60,7 +66,8 @@ export const About = () => {
           </Reveal>
         </div>
         <Stats />
-      </div>
+        </div>
+      </ParallaxWrapper>
     </section>
   );
 };

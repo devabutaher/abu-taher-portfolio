@@ -4,7 +4,7 @@ import { Hero } from "@/components/hero/Hero";
 import { Heading } from "@/components/nav/Heading";
 import { SideBar } from "@/components/nav/SideBar";
 import { Projects } from "@/components/projects/Projects";
-import { ScrollIndicator } from "@/components/scroll/Scroll";
+import { ScrollIndicator } from "@/components/Scroll/Scroll";
 
 // Dynamic imports for heavy components — loaded only when needed
 const AuroraBackground = dynamic(
@@ -21,7 +21,7 @@ const Experience = dynamic(
 );
 
 const Testimonial = dynamic(
-  () => import("@/components/testimonial/Testimonial"),
+  () => import("@/components/Testimonial/Testimonial"),
 );
 
 const Contact = dynamic(

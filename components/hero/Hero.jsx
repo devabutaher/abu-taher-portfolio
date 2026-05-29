@@ -5,6 +5,7 @@ import ContactButton from "./ContactButton";
 import { DrawCircle } from "./DrawCircle";
 import styles from "./hero.module.scss";
 import RoleTypeWriter from "./RoleTypeWriter";
+import { Hero3D } from "./Hero3D";
 
 export const Hero = () => {
   return (
@@ -13,21 +14,29 @@ export const Hero = () => {
       className="relative px-4 section-wrapper sm:px-6"
       aria-label="Hero Section"
     >
+      <div className={styles.backgroundContainer}>
+        <div className={styles.gradientOrb}></div>
+        <div className={styles.gradientOrb}></div>
+      </div>
+
       <div
         className={`${styles.copyWrapper} relative flex flex-col md:flex-row-reverse items-center justify-between gap-10`}
       >
-        {/* Image */}
+        {/* Image & 3D */}
         <Reveal direction="scale" delay={0.1}>
-          <div className="flex justify-center flex-shrink-0">
-            <Image
-              className="w-[200px] sm:w-[280px] md:w-[340px] lg:w-[38rem] h-auto rounded-full"
-              src={profile}
-              alt="Portrait of Abu Taher, MERN stack developer"
-              priority
-              placeholder="blur"
-              quality={85}
-              sizes="(max-width: 768px) 60vw, (max-width: 1024px) 35vw, 35rem"
-            />
+          <div className="flex flex-col gap-8 items-center flex-shrink-0">
+            <div className={`${styles.imageContainer}`}>
+              <Image
+                className="w-[200px] sm:w-[280px] md:w-[340px] lg:w-[38rem] h-auto rounded-full"
+                src={profile}
+                alt="Portrait of Abu Taher, MERN stack developer"
+                priority
+                placeholder="blur"
+                quality={85}
+                sizes="(max-width: 768px) 60vw, (max-width: 1024px) 35vw, 35rem"
+              />
+            </div>
+            <Hero3D />
           </div>
         </Reveal>
 

@@ -8,6 +8,7 @@ import { FaQuoteRight } from "react-icons/fa";
 import { Reveal } from "../utils/Reveal";
 import { SectionHeader } from "../utils/SectionHeader";
 import styles from "./Testimonial.module.scss";
+import { ParallaxWrapper } from "@/components/utils/ParallaxWrapper";
 
 export const Testimonial = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -43,9 +44,12 @@ export const Testimonial = () => {
 
   return (
     <section id="testimonial" className="section-wrapper">
-      <SectionHeader title="Testimonial" dir="r" />
+      <ParallaxWrapper offset={0.35}>
+        <SectionHeader title="Testimonial" dir="r" />
+      </ParallaxWrapper>
 
-      <div className="overflow-hidden" ref={emblaRef}>
+      <ParallaxWrapper offset={0.45}>
+        <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-0">
           {TESTIMONIALS.map(({ name, text, work }) => (
             <div
@@ -95,7 +99,7 @@ export const Testimonial = () => {
 
       {/* Dot navigation */}
       <div
-        className="flex justify-center gap-2 mt-8"
+        className="flex justify-center gap-3 mt-12 mb-4"
         role="tablist"
         aria-label="Testimonial navigation"
       >
@@ -106,17 +110,15 @@ export const Testimonial = () => {
             aria-selected={i === selectedIndex}
             aria-label={`Go to testimonial ${i + 1}`}
             onClick={() => scrollTo(i)}
-            className={`
-                rounded-full transition-all duration-300
-                ${
-                  i === selectedIndex
-                    ? "w-5 h-5 bg-[var(--brand)]"
-                    : "w-4 h-4 bg-[var(--background-lighter)]"
-                }
-              `}
+            className={`transition-all duration-300 rounded-full ${
+              i === selectedIndex
+                ? "w-6 h-6 bg-[var(--brand)] shadow-[0_0_20px_rgba(139,92,246,0.4)] scale-110"
+                : "w-4 h-4 bg-[var(--background-lighter)] hover:bg-[var(--border-glow)]"
+            }`}
           />
         ))}
-      </div>
+        </div>
+      </ParallaxWrapper>
     </section>
   );
 };
