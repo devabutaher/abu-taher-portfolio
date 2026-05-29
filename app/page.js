@@ -21,7 +21,7 @@ const Experience = dynamic(
 );
 
 const Testimonial = dynamic(
-  () => import("@/components/testimonial/Testimonial"),
+  () => import("@/components/Testimonial/Testimonial"),
 );
 
 const Contact = dynamic(
