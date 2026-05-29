@@ -2,19 +2,26 @@
 
 .stats {
   position: relative;
+  margin-top: var(--space-8);
 }
 
 .statColumn {
   h4 {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-6);
     font-family: var(--font-outfit), sans-serif;
+    letter-spacing: -0.02em;
+
     span {
       font-size: var(--text-md);
       font-weight: 700;
       position: relative;
-      margin-left: 0.8rem;
+      margin-left: var(--space-3);
+      background: linear-gradient(135deg, var(--brand), var(--accent-indigo));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   }
 }
@@ -22,29 +29,35 @@
 .statGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding: 4px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  padding: var(--space-2);
 }
 
 .skillChip {
   font-size: var(--text-xs);
   background: rgba(139, 92, 246, 0.08);
   border: 1px solid rgba(139, 92, 246, 0.15);
-  padding: 0.2rem 0.8rem;
-  border-radius: 999px;
-  backdrop-filter: blur(4px);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(6px);
   color: var(--text);
   cursor: default;
   display: inline-block;
   white-space: nowrap;
   position: relative;
   z-index: 10;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all var(--transition-base);
 
-  // Glass design consistency
   @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05);
 
   &:hover {
-    transform: translateY(-2px);
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.3);
+    color: var(--brand);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
   }
 }

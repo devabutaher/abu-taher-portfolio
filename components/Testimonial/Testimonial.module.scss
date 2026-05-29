@@ -5,16 +5,46 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding: 2.4rem;
-  background: var(--background-card);
-  backdrop-filter: blur(12px);
+  padding: var(--space-6);
+  background: linear-gradient(135deg, rgba(15, 15, 35, 0.5), rgba(139, 92, 246, 0.05));
+  backdrop-filter: blur(15px);
   border: 1px solid var(--border-subtle);
-  border-radius: 1.2rem;
+  border-radius: var(--radius-lg);
   position: relative;
+  transition: all var(--transition-base);
 
-  @include glass-card-hover(0.04, 0.06);
+  @include glass-card-hover(0.05, 0.08);
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(15, 15, 35, 0.7), rgba(139, 92, 246, 0.1));
+    border-color: var(--border-glow);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-6px);
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 0;
+
+    p {
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      line-height: 1.75;
+      color: var(--text);
+      font-weight: 400;
+      letter-spacing: -0.005em;
+      margin: 0;
+
+      &::before {
+        content: """;
+        color: var(--brand);
+        font-size: 3rem;
+        opacity: 0.3;
+        margin-right: 0.5rem;
+      }
+    }
+  }
 
   @media (min-width: 640px) {
-    padding: 2.4rem;
+    padding: var(--space-8);
   }
 }

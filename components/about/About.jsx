@@ -4,11 +4,13 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { MyLinks } from "../nav/components/MyLinks";
 import styles from "./about.module.scss";
 import { Stats } from "./Stats";
+import { StatsCards } from "./StatsCards";
 
 export const About = () => {
   return (
     <section id="about" className="section-wrapper" aria-label="About Section">
       <SectionHeader title="About" dir="l" />
+      <StatsCards />
       <div className={styles.about}>
         <div>
           <Reveal direction="left">

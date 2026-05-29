@@ -2,33 +2,50 @@
 
 .projects {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
 }
 
 .projectCard {
-  border-radius: 1.2rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-subtle);
   overflow: hidden;
   background: var(--background-card);
+  transition: all var(--transition-base);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   @include glass-card-hover(0.05, 0.08);
+
+  &:hover {
+    border-color: var(--border-glow);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-8px);
+  }
 }
 
 .projectImage {
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: var(--background-card);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(93, 78, 153, 0.02));
   cursor: pointer;
   position: relative;
   overflow: hidden;
   border: none;
   display: block;
   border-bottom: 1px solid var(--border-subtle);
+  transition: all var(--transition-base);
 
   .projectImg {
     width: 88%;
@@ -37,16 +54,20 @@
     top: 0;
     left: 50%;
     translate: -50% 15%;
-    transition: translate 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-      width 0.45s ease, scale 0.45s ease;
-    border-radius: 0.4rem;
+    transition: translate 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+      width 0.6s ease, scale 0.6s ease, filter 0.6s ease;
+    border-radius: var(--radius-md);
+    filter: brightness(1) contrast(1);
   }
 
   &:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(93, 78, 153, 0.05));
+
     .projectImg {
-      translate: -50% 12%;
-      width: 90%;
-      scale: 1.05;
+      translate: -50% 10%;
+      width: 92%;
+      scale: 1.08;
+      filter: brightness(1.1) contrast(1.1);
     }
 
     .cardGlow {
@@ -60,42 +81,54 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 55%;
-  background: linear-gradient(to top, rgba(139, 92, 246, 0.14), transparent);
+  height: 60%;
+  background: linear-gradient(to top, rgba(139, 92, 246, 0.2), transparent);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity var(--transition-base);
   pointer-events: none;
   z-index: 2;
+  filter: blur(8px);
 }
 
 .projectCopy {
   margin: 0;
-  padding: 2.4rem;
+  padding: var(--space-6);
   position: relative;
   z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .projectTitle {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
 
   h4 {
     font-family: var(--font-outfit), sans-serif;
     font-weight: 700;
     font-size: var(--text-md);
+    letter-spacing: -0.01em;
     flex-shrink: 0;
-    max-width: calc(100% - 150px);
   }
 
   a {
-    opacity: 0.65;
-    transition: 0.25s opacity, 0.25s color;
-    color: var(--text);
+    opacity: 0.6;
+    transition: all var(--transition-fast);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
 
     &:hover {
       opacity: 1;
       color: var(--brand);
+      background: rgba(139, 92, 246, 0.1);
+      transform: translateY(-2px);
     }
   }
 }
@@ -103,29 +136,34 @@
 .projectTitleLine {
   width: 100%;
   height: 1px;
-  background: var(--text);
-  opacity: 0.15;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  opacity: 1;
 }
 
 .projectDescription {
   font-family: var(--font-plus-jakarta), sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-sm);
-  line-height: 1.6;
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin-top: auto;
+  padding-top: var(--space-4);
 
   .learnMoreBtn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-family: var(--font-plus-jakarta), sans-serif;
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--brand);
     cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    transition: color 0.2s ease;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    margin-left: var(--space-2);
 
     &:hover {
-      color: #a78bfa;
+      transform: translateX(4px);
+      color: var(--accent-indigo);
     }
   }
 }
@@ -133,31 +171,36 @@
 .projectTech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: var(--space-2);
   font-size: var(--text-xs);
   color: var(--text);
-  margin: 0.8rem 0;
-  padding: 4px;
+  margin: var(--space-4) 0;
+  padding: 0;
 
   .chip {
     font-family: var(--font-plus-jakarta), sans-serif;
     background: rgba(139, 92, 246, 0.08);
     border: 1px solid rgba(139, 92, 246, 0.15);
-    padding: 0.4rem 1rem;
-    border-radius: 999px;
-    backdrop-filter: blur(4px);
-    transition: all 0.3s ease;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(6px);
+    transition: all var(--transition-fast);
     cursor: default;
     display: inline-block;
     white-space: nowrap;
     position: relative;
     z-index: 10;
+    font-weight: 500;
+    letter-spacing: 0.02em;
 
     @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05);
 
     &:hover {
-      transform: translateY(-2px);
+      background: rgba(139, 92, 246, 0.15);
+      border-color: var(--brand);
       color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
     }
   }
 }
