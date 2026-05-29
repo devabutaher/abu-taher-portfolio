@@ -13,12 +13,17 @@ export const Hero = () => {
       className="relative px-4 section-wrapper sm:px-6"
       aria-label="Hero Section"
     >
+      <div className={styles.backgroundContainer}>
+        <div className={styles.gradientOrb}></div>
+        <div className={styles.gradientOrb}></div>
+      </div>
+
       <div
         className={`${styles.copyWrapper} relative flex flex-col md:flex-row-reverse items-center justify-between gap-10`}
       >
         {/* Image */}
         <Reveal direction="scale" delay={0.1}>
-          <div className="flex justify-center flex-shrink-0">
+          <div className={`flex justify-center flex-shrink-0 ${styles.imageContainer}`}>
             <Image
               className="w-[200px] sm:w-[280px] md:w-[340px] lg:w-[38rem] h-auto rounded-full"
               src={profile}

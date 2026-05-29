@@ -18,6 +18,15 @@
   --brand: #8b5cf6;
   --brand-glow: rgba(139, 92, 246, 0.15);
 
+  /* Premium accent colors */
+  --accent-indigo: #5d4e99;
+  --accent-slate: #64748b;
+  --accent-slate-dark: #475569;
+  --neon-glow: rgba(139, 92, 246, 0.4);
+  --neon-glow-soft: rgba(139, 92, 246, 0.25);
+  --glow-indigo: rgba(93, 78, 153, 0.3);
+  --surface-subtle: rgba(100, 116, 139, 0.08);
+
   /* Fluid Typography Scale */
   --text-xs: clamp(1.4rem, 1vw + 1rem, 1.6rem);
   --text-sm: clamp(1.6rem, 1vw + 1.2rem, 1.8rem);
