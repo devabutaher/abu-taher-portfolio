@@ -1,10 +1,6 @@
 import { SOCIAL_LINKS } from "@/data/links";
 import Link from "next/link";
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiFillTwitterCircle,
-} from "react-icons/ai";
+import { AiFillGithub, AiFillLinkedin, AiOutlineMail } from "react-icons/ai";
 import styles from "./headinglinks.module.scss";
 
 const LINKS = [
@@ -15,9 +11,9 @@ const LINKS = [
   },
   { href: SOCIAL_LINKS.github, Icon: AiFillGithub, label: "GitHub profile" },
   {
-    href: SOCIAL_LINKS.twitter,
-    Icon: AiFillTwitterCircle,
-    label: "Twitter profile",
+    href: SOCIAL_LINKS.email,
+    Icon: AiOutlineMail,
+    label: "Email",
   },
 ];
 

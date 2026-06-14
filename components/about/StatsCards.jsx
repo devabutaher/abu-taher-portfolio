@@ -5,7 +5,11 @@ import styles from "./stats-cards.module.scss";
 import { Reveal } from "@/components/utils/Reveal";
 
 export const StatsCards = () => {
-  const [counters, setCounters] = useState({ projects: 0, years: 0, clients: 0 });
+  const [counters, setCounters] = useState({
+    projects: 0,
+    commits: 0,
+    teams: 0,
+  });
   const hasAnimated = useRef(false);
 
   useEffect(() => {
@@ -29,7 +33,7 @@ export const StatsCards = () => {
   }, []);
 
   const animateCounters = () => {
-    const targets = { projects: 8, years: 2, clients: 15 };
+    const targets = { projects: 10, commits: 3000, teams: 3 };
     const duration = 2000;
     const steps = 60;
     const stepDuration = duration / steps;
@@ -42,8 +46,8 @@ export const StatsCards = () => {
 
       setCounters({
         projects: Math.floor(targets.projects * progress),
-        years: Math.floor(targets.years * progress),
-        clients: Math.floor(targets.clients * progress),
+        commits: Math.floor(targets.commits * progress),
+        teams: Math.floor(targets.teams * progress),
       });
 
       if (currentStep >= steps) {
@@ -55,14 +59,19 @@ export const StatsCards = () => {
 
   const stats = [
     { value: counters.projects, label: "Projects Completed", icon: "📁" },
-    { value: counters.years, label: "Years Experience", icon: "⏱️" },
-    { value: counters.clients, label: "Clients Satisfied", icon: "👥" },
+    { value: counters.commits, label: "Github Commits", icon: "🚀" },
+    { value: counters.teams, label: "Team Projects", icon: "👥" },
   ];
 
   return (
     <div className={styles.statsGrid}>
       {stats.map((stat, index) => (
-        <Reveal key={index} direction="up" delay={0.2 + index * 0.15}>
+        <Reveal
+          key={index}
+          direction="up"
+          delay={0.2 + index * 0.15}
+          clipOverflow={false}
+        >
           <div className={styles.statCard}>
             <div className={styles.statIcon}>{stat.icon}</div>
             <div className={styles.statContent}>

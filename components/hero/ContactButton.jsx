@@ -5,7 +5,10 @@ import { StandardButton } from "../buttons/StandardButton";
 
 const ContactButton = () => {
   return (
-    <StandardButton onClick={() => scrollToSection("contact")}>
+    <StandardButton
+      variant="outline"
+      onClick={() => scrollToSection("contact")}
+    >
       Contact me
     </StandardButton>
   );

@@ -20,34 +20,52 @@
   }
 }
 
+.contactLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+
+  & > div {
+    overflow: visible !important;
+  }
+
+  & > div:first-child {
+  flex: 1;
+
+  &, & > div, & > div > div, & > div > div > div {
+    height: 100%;
+  }
+}
+}
+
 .socialGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1.5rem;
+  grid-template-rows: repeat(2, minmax(120px, 1fr));
+  gap: 1.2rem;
   width: 100%;
   height: 100%;
-  min-height: 250px; 
-
-  @media (min-width: 102 lapx) {
-    min-height: auto;
-  }
 }
 
 .socialBlock {
-  border-radius: 0.8rem;
+  border-radius: 1.2rem;
   background: var(--background-card);
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-subtle);
+  min-height: 220px;
+  @media (max-width: 640px) {
+    min-height: 160px;
+  }
 
-  @include glass-card-hover(0.03, 0.05);
+  @include glass-card-hover(0.03, 0.05, 1.2rem);
   
   a {
     display: grid;
     height: 100%;
     width: 100%;
     place-content: center;
-    font-size: 3rem;
+    font-size: clamp(2rem, 2.5vw, 3.6rem);
     color: var(--text);
     text-decoration: none;
     transition: color 0.2s ease;
@@ -57,15 +75,7 @@
     &:hover {
       color: var(--brand);
     }
-
-    @media (min-width: 768px) {
-      font-size: 5rem;
-    }
   }
-}
-
-.socialCard {
-  composes: socialBlock;
 }
 
 .contactForm {
@@ -132,38 +142,39 @@
   }
 }
 
-.submitBtn {
-  font-family: var(--font-outfit), sans-serif;
-  width: 100%;
+.emailCard {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1.2rem;
-  background: rgba(139, 92, 246, 0.85);
-  color: var(--text);
-  font-weight: 600;
-  font-size: 1.7rem;
-  padding: 1.4rem;
-  border-radius: 0.8rem;
-  outline: none;
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  cursor: pointer;
-  position: relative;
-  z-index: 10;
+  padding: 1.6rem 2rem;
+  border-radius: 1rem;
+  background: var(--background-card);
   backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  color: var(--text);
 
-  @include glass-card-hover($sheen-opacity: 0.06, $gradient-opacity: 0.09);
+  @include glass-card-hover(0.03, 0.05, 1rem);
 
-  &:hover {
-    background: var(--brand);
-    border-color: rgba(139, 92, 246, 0.4);
-    transform: translateY(-2px);
+  svg {
+    flex-shrink: 0;
+    color: var(--brand);
   }
 
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
+  &:hover {
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+}
+
+.emailLink {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--brand);
   }
 }
 

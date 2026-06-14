@@ -1,8 +1,7 @@
+import { CustomCursor } from "@/components/cursor/CustomCursor";
 import { Analytics } from "@vercel/analytics/react";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
-import { CustomCursor } from "@/components/cursor/CustomCursor";
 import "./globals.css";
-import "./design-system.css";
 
 const outfit = Outfit({
   subsets: ["latin"],

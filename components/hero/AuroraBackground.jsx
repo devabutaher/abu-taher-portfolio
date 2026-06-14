@@ -10,7 +10,7 @@ import {
   motion,
 } from "framer-motion";
 
-const COLORS_TOP = ["#8b5cf6", "#3b82f6", "#14b8a6", "#a855f7"];
+const COLORS_TOP = ["#8b5cf6", "#3b82f6", "#06b6d4", "#a855f7"];
 
 export const AuroraBackground = () => {
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -34,7 +34,7 @@ export const AuroraBackground = () => {
     if (reducedMotion) return;
     const controls = animate(color, COLORS_TOP, {
       ease: "easeInOut",
-      duration: 10,
+      duration: 5,
       repeat: Infinity,
       repeatType: "mirror",
     });
@@ -46,10 +46,10 @@ export const AuroraBackground = () => {
   const starsConfig = useMemo(
     () => ({
       radius: 40,
-      count: reducedMotion || isMobile ? 400 : 1500,
-      factor: 3,
+      count: reducedMotion || isMobile ? 400 : 1200,
+      factor: 5,
       fade: true,
-      speed: reducedMotion ? 0.3 : 1,
+      speed: reducedMotion ? 0.3 : 1.5,
     }),
     [reducedMotion, isMobile],
   );

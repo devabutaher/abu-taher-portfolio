@@ -1,0 +1,135 @@
+/* =====================================================
+   HeroProfile — Animated profile portrait
+   Extracted from TechOrbit — Three.js / canvas parts removed.
+   ===================================================== */
+
+/* =====================================================
+   HeroProfile — Animated profile portrait
+   Extracted from TechOrbit — Three.js / canvas parts removed.
+   ===================================================== */
+
+/* ── Outer container ── */
+.sceneWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width:  500px;
+  height: 500px;
+
+  @media (max-width: 1200px) { width: 450px; height: 450px; }
+  @media (max-width: 1024px) { width: 400px; height: 400px; }
+  @media (max-width:  768px) { width: 340px; height: 340px; }
+  @media (max-width:  480px) { width: 295px; height: 295px; }
+}
+
+/* ── Profile image wrapper — BIGGER ── */
+.profileWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width:  260px;
+  height: 260px;
+
+  @media (max-width: 1024px) { width: 220px; height: 220px; }
+  @media (max-width:  768px) { width: 180px; height: 180px; }
+  @media (max-width:  480px) { width: 150px; height: 150px; }
+}
+
+/* Spinning conic-gradient ring stroke */
+.profileRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  z-index: 0;
+
+  background: conic-gradient(
+    from 0deg,
+    #7c3aed 0%,
+    #a78bfa 25%,
+    #4c1d95 55%,
+    #3b82f6 75%,
+    #7c3aed 100%
+  );
+
+  /* Show only the ring stroke via masking */
+  mask:         radial-gradient(farthest-side, transparent calc(100% - 6px), black calc(100% - 6px));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), black calc(100% - 6px));
+
+  animation: spinRing 7s linear infinite;
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+/*
+  Pulsing ambient glow disk — sits BEHIND the image (z-index: 0).
+  Enlarged with slight downward offset so it's clearly visible
+  as a soft halo behind/below the portrait.
+*/
+.profileGlow {
+  position: absolute;
+  inset: -50px;
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(28px);
+  animation: glowPulse 3.5s ease-in-out infinite;
+  pointer-events: none;
+
+  /* Push glow slightly below-center for a grounded halo effect */
+  transform: translateY(10px);
+
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.75) 0%,
+    rgba(124, 58, 237, 0.50) 40%,
+    rgba(76, 29, 149, 0.28)  65%,
+    transparent 80%
+  );
+
+  /* Mobile: smaller glow, centered (no Y offset) */
+  @media (max-width: 768px) {
+    inset: -25px;
+    filter: blur(18px);
+    transform: translateY(0);
+    animation-name: glowPulseMobile;
+    background: radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.55) 0%,
+      rgba(124, 58, 237, 0.35) 50%,
+      transparent 75%
+    );
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; transform: translateY(10px) scale(1); }
+  50%       { opacity: 0.95; transform: translateY(10px) scale(1.08); }
+}
+
+/* Mobile glow pulse — no Y offset so it stays centered */
+@keyframes glowPulseMobile {
+  0%, 100% { opacity: 0.40; transform: scale(1); }
+  50%       { opacity: 0.70; transform: scale(1.06); }
+}
+
+/* Circular photo clip */
+.profileImageClip {
+  position: relative;
+  z-index: 1;
+  width:  100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+
+  border: 2.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 0 0 1.5px rgba(124, 58, 237, 0.50),
+    0 12px 48px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}

@@ -1,7 +1,7 @@
 import { SOCIAL_LINKS } from "@/data/links";
 import Image from "next/image";
 import Link from "next/link";
-import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { AiFillGithub, AiFillLinkedin, AiOutlineMail } from "react-icons/ai";
 import { FaRegArrowAltCircleUp } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
 
@@ -9,6 +9,7 @@ const SOCIAL = [
   { href: SOCIAL_LINKS.github, Icon: AiFillGithub, label: "GitHub" },
   { href: SOCIAL_LINKS.linkedin, Icon: AiFillLinkedin, label: "LinkedIn" },
   { href: SOCIAL_LINKS.facebook, Icon: SiFacebook, label: "Facebook" },
+  { href: SOCIAL_LINKS.email, Icon: AiOutlineMail, label: "Email" },
 ];
 
 const NAV = [

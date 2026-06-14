@@ -16,7 +16,7 @@ export const Projects = () => {
       <ParallaxWrapper offset={0.45}>
         <div className={styles.projects}>
         {PROJECTS.map((project, i) => (
-          <Reveal key={project.title}>
+          <Reveal key={project.title} clipOverflow={false}>
             <Project project={project} index={i} />
           </Reveal>
         ))}

@@ -1,20 +1,21 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { Reveal } from "@/components/utils/Reveal";
 import { motion, useAnimation, useInView } from "framer-motion";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AiFillGithub, AiOutlineExport } from "react-icons/ai";
 import styles from "./projects.module.scss";
 
-const ProjectModal = dynamic(
-  () => import("./ProjectModal").then((m) => m.ProjectModal),
+const ProjectModal = dynamic(() =>
+  import("./ProjectModal").then((m) => m.ProjectModal),
 );
 
 export const Project = ({ project, index = 0 }) => {
-  const { title, imgSrc, code, projectLink, tech, description, modalContent } = project;
+  const { title, imgSrc, code, projectLink, tech, description, modalContent } =
+    project;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -79,15 +80,15 @@ export const Project = ({ project, index = 0 }) => {
             </div>
           </Reveal>
 
-            <Reveal>
-              <div className={styles.projectTech}>
-                {tech.map((t) => (
-                  <span key={t} className={styles.chip}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
+          <Reveal>
+            <div className={styles.projectTech}>
+              {tech.map((t) => (
+                <span key={t} className={styles.chip}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </Reveal>
 
           <Reveal>
             <p className={styles.projectDescription}>

@@ -5,10 +5,11 @@ import styles from "./roleTypewriter.module.scss";
 
 const RoleTypeWriter = () => {
   const ROLES = [
+    "Full Stack Developer",
     "React.js Developer",
     "Next.js Developer",
-    "Front-End Developer",
     "MERN Stack Developer",
+    "Frontend-Focused Developer",
   ];
 
   return (

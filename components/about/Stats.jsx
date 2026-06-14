@@ -7,7 +7,7 @@ import styles from "./stats.module.scss";
 export const Stats = () => {
   return (
     <div className={styles.stats}>
-      <Reveal direction="right" delay={0.2}>
+      <Reveal direction="right" delay={0.2} clipOverflow={false}>
         <div className={styles.statColumn}>
           <h4>
             <AiFillCode size="2.6rem" color="var(--brand)" />
@@ -33,7 +33,7 @@ export const Stats = () => {
           </div>
         </div>
       </Reveal>
-      <Reveal direction="left" delay={0.4}>
+      <Reveal direction="left" delay={0.4} clipOverflow={false}>
         <div className={styles.statColumn}>
           <h4>
             <AiFillCode

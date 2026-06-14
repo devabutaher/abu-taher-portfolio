@@ -1,0 +1,263 @@
+/* ── Backdrop (mirrors projectmodal.module.scss) ── */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000000;
+
+  height: 100vh;
+  padding: var(--space-16) var(--space-4);
+  background: rgba(10, 10, 25, 0.88);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand) transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  cursor: pointer;
+  animation: fadeInModal 0.28s ease-out;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Modal card ── */
+.modalCard {
+  width: 100%;
+  max-width: 740px;
+  height: fit-content;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--background-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glow);
+  box-shadow: var(--shadow-2xl), 0 0 80px rgba(139, 92, 246, 0.15);
+  cursor: auto;
+}
+
+/* ── Decorative cover strip ── */
+.coverStrip {
+  position: relative;
+  height: 14rem;
+  overflow: hidden;
+  background: color-mix(
+    in srgb,
+    var(--cover-color, #8b5cf6) 25%,
+    #0a0a1a
+  );
+}
+
+/* Subtle radial gradient centred on the colour */
+.coverGradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    color-mix(in srgb, var(--cover-color, #8b5cf6) 45%, transparent),
+    transparent 70%
+  );
+}
+
+/* Dot-grid pattern for texture */
+.coverPattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.07) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+}
+
+/* ── Modal content area ── */
+.modalContent {
+  padding: var(--space-8);
+}
+
+/* Tag chips */
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.tag {
+  font-family: var(--font-plus-jakarta), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 1rem;
+}
+
+/* Title */
+.modalTitle {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: var(--text-lg);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+  background: linear-gradient(135deg, var(--brand), var(--accent-indigo));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Meta row — date · read time */
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-plus-jakarta), sans-serif;
+  font-size: var(--text-xs);
+  color: var(--text-darker);
+  font-weight: 500;
+
+  svg { flex-shrink: 0; }
+}
+
+.metaDivider {
+  color: var(--text-darker);
+  opacity: 0.4;
+  font-size: var(--text-sm);
+}
+
+/* ── Article body ── */
+.articleBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.contentParagraph {
+  font-family: var(--font-plus-jakarta), sans-serif;
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.contentHeading {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: var(--text-md);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: var(--space-2) 0 0;
+}
+
+/* Code block */
+.codeBlock {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  background: rgba(8, 8, 22, 0.75);
+}
+
+.codeLang {
+  font-family: "SF Mono", "Fira Code", "JetBrains Mono", Consolas, monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: rgba(139, 92, 246, 0.08);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+  padding: var(--space-2) var(--space-5);
+}
+
+.codePre {
+  margin: 0;
+  padding: var(--space-5) var(--space-6);
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand) transparent;
+
+  code {
+    font-family: "SF Mono", "Fira Code", "JetBrains Mono", Consolas, monospace;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: #e2e8f0;
+    white-space: pre;
+    display: block;
+  }
+}
+
+/* ── Close button (mirrors projectmodal) ── */
+.closeModalBtn {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  padding: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  font-size: var(--text-md);
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 10;
+
+  &:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: var(--brand);
+    color: var(--brand);
+    transform: rotate(90deg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .modal {
+    padding: var(--space-12) var(--space-3);
+  }
+
+  .modalContent {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .coverStrip {
+    height: 10rem;
+  }
+
+  .codePre code {
+    font-size: 1.2rem;
+  }
+}

@@ -64,7 +64,7 @@
   font-weight: 500;
   color: var(--text);
 
-  @include glass-card-hover(0.03, 0.04);
+  @include glass-card-hover(0.03, 0.04, 0.8rem);
 
   svg {
     flex-shrink: 0;

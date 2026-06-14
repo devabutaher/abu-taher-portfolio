@@ -20,7 +20,7 @@
   border: 1px solid var(--border-subtle);
   overflow: hidden;
   background: var(--background-card);
-  transition: all var(--transition-base);
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@
   border: none;
   display: block;
   border-bottom: 1px solid var(--border-subtle);
-  transition: all var(--transition-base);
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
 
   .projectImg {
     width: 88%;
@@ -65,7 +65,7 @@
 
     .projectImg {
       translate: -50% 10%;
-      width: 92%;
+      width: 85%;
       scale: 1.08;
       filter: brightness(1.1) contrast(1.1);
     }
@@ -193,7 +193,7 @@
     font-weight: 500;
     letter-spacing: 0.02em;
 
-    @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05);
+    @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05, $radius: var(--radius-full));
 
     &:hover {
       background: rgba(139, 92, 246, 0.15);

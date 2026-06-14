@@ -5,11 +5,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 import { BiLoaderAlt, BiPaperPlane } from "react-icons/bi";
-import { SiGithub, SiTiktok, SiTwitter, SiYoutube } from "react-icons/si";
+import { SiGithub, SiFacebook, SiLinkedin, SiX } from "react-icons/si";
+import { AiOutlineMail } from "react-icons/ai";
+import { SOCIAL_LINKS } from "@/data/links";
 
 import { NotificationContainer } from "../shared/Notification";
 import { Reveal } from "../utils/Reveal";
 import { SectionHeader } from "../utils/SectionHeader";
+import { StandardButton } from "../buttons/StandardButton";
 import styles from "./contact.module.scss";
 
 const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
@@ -34,37 +37,33 @@ const SocialsBlock = () => (
   <div className={styles.socialGrid}>
     <Block
       whileHover={{ rotate: "2.5deg", scale: 1.05 }}
-      className={styles.socialCard}
     >
-      <a href="#" aria-label="YouTube">
-        <SiYoutube />
+      <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <SiLinkedin />
       </a>
     </Block>
 
     <Block
       whileHover={{ rotate: "-2.5deg", scale: 1.05 }}
-      className={styles.socialCard}
     >
-      <a href="#" aria-label="GitHub">
+      <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
         <SiGithub />
       </a>
     </Block>
 
     <Block
       whileHover={{ rotate: "-2.5deg", scale: 1.05 }}
-      className={styles.socialCard}
     >
-      <a href="#" aria-label="TikTok">
-        <SiTiktok />
+      <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <SiFacebook />
       </a>
     </Block>
 
     <Block
       whileHover={{ rotate: "2.5deg", scale: 1.05 }}
-      className={styles.socialCard}
     >
-      <a href="#" aria-label="Twitter">
-        <SiTwitter />
+      <a href={SOCIAL_LINKS.x} target="_blank" rel="noopener noreferrer" aria-label="X">
+        <SiX />
       </a>
     </Block>
   </div>
@@ -107,11 +106,22 @@ export const Contact = () => {
       />
 
       <div className={styles.contactSection}>
-        <Reveal width="100%" delay={0.1}>
-          <SocialsBlock />
-        </Reveal>
+        <div className={styles.contactLeft}>
+          <Reveal width="100%" delay={0.1} clipOverflow={false}>
+            <SocialsBlock />
+          </Reveal>
 
-        <Reveal width="100%" delay={0.3}>
+          <Reveal width="100%" delay={0.2} clipOverflow={false}>
+            <div className={styles.emailCard}>
+              <AiOutlineMail size="2.4rem" />
+              <a href={SOCIAL_LINKS.email} className={styles.emailLink}>
+                {SOCIAL_LINKS.email.replace("mailto:", "")}
+              </a>
+            </div>
+          </Reveal>
+        </div>
+
+        <Reveal width="100%" delay={0.3} clipOverflow={false}>
           <form className={styles.contactForm} onSubmit={sendEmail}>
             <div className={styles.inputGroupRow}>
               <div>
@@ -157,18 +167,16 @@ export const Contact = () => {
               />
             </div>
 
-            <button
-              type="submit"
-              className={styles.submitBtn}
-              disabled={loading}
-            >
-              {loading ? (
-                <BiLoaderAlt className="text-3xl animate-spin" />
-              ) : (
-                <BiPaperPlane className="text-4xl" />
-              )}
-              <span>{loading ? "Sending..." : "Send message"}</span>
-            </button>
+            <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+              <StandardButton type="submit" disabled={loading}>
+                {loading ? (
+                  <BiLoaderAlt className="text-3xl animate-spin" />
+                ) : (
+                  <BiPaperPlane className="text-4xl" />
+                )}
+                <span>{loading ? "Sending..." : "Send message"}</span>
+              </StandardButton>
+            </div>
           </form>
         </Reveal>
       </div>

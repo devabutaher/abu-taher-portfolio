@@ -17,7 +17,7 @@ export const Experience = () => {
       <ParallaxWrapper offset={0.4}>
         <div className={styles.timeline}>
         {EXPERIENCES.map((exp, i) => (
-          <Reveal key={i} width="100%">
+          <Reveal key={i} width="100%" clipOverflow={false}>
             <motion.div
               className={styles.timelineCard}
               initial={{ opacity: 0, x: -30 }}

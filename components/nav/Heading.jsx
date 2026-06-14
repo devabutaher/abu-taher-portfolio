@@ -2,7 +2,7 @@
 
 import { SOCIAL_LINKS } from "@/data/links";
 import Link from "next/link";
-import { OutlineButton } from "../buttons/OutlineButton";
+import { StandardButton } from "../buttons/StandardButton";
 import { MyLinks } from "./components/MyLinks";
 import styles from "./heading.module.scss";
 
@@ -14,7 +14,7 @@ export const Heading = () => {
       </div>
       <div className={styles.headingRight}>
         <Link href={SOCIAL_LINKS.resume} target="_blank">
-          <OutlineButton>Resume</OutlineButton>
+          <StandardButton variant="outline">Resume</StandardButton>
         </Link>
       </div>
     </header>

@@ -1,33 +1,152 @@
-@use "../shared/glass-card" as *;
+/* =====================================================
+   StandardButton — Primary CTA with glass + glow
+   ===================================================== */
 
 .standardButton {
+  position: relative;
   font-family: var(--font-outfit), sans-serif;
   outline: none;
-  border: 1px solid rgba(139, 92, 246, 0.2);
   cursor: pointer;
 
-  padding: 1.2rem 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+
+  padding: 1rem 2.8rem;
   @media (max-width: 768px) {
-    padding: 0.6rem 1.8rem;
+    padding: 0.8rem 2rem;
   }
 
-  color: var(--text);
-  background: rgba(139, 92, 246, 0.85);
+  border-radius: 1rem;
   font-size: var(--text-sm);
-  border-radius: 0.8rem;
-
-  position: relative;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   z-index: 20;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
 
-  // glass mixin — same as cards and outline button
-  @include glass-card-hover($sheen-opacity: 0.06, $gradient-opacity: 0.09);
+  /* ── Glass base ── */
+  background: rgba(139, 92, 246, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(139, 92, 246, 0.30);
 
-  // override transform — consistent lift with outline button
+  color: #fff;
+
+  /* ── Glow shadow (rest) — fully visible, no overflow clipping ── */
+  box-shadow:
+    0 0 24px rgba(139, 92, 246, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+  transition:
+    background 350ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Shimmer sweep — clipped to border-radius so no overflow:hidden needed ── */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    clip-path: inset(0 round 1rem);
+    pointer-events: none;
+
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(255, 255, 255, 0.08) 48%,
+      rgba(255, 255, 255, 0.06) 52%,
+      transparent 70%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    transition: background-position 0.8s ease;
+  }
+
   &:hover {
-    background: var(--brand);
-    border-color: rgba(139, 92, 246, 0.4);
-    transform: translateY(-2px);
+    background: rgba(139, 92, 246, 0.22);
+    border-color: rgba(139, 92, 246, 0.55);
+    transform: translateY(-3px);
+
+    /* ── Amplified glow — no clipping ── */
+    box-shadow:
+      0 0 36px rgba(139, 92, 246, 0.35),
+      0 0 72px rgba(139, 92, 246, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+
+    &::after {
+      background-position: 0% 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 20px rgba(139, 92, 246, 0.20),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition-duration: 100ms;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+  }
+}
+
+/* ── Outline variant (secondary CTA) ── */
+.outline {
+  background: rgba(139, 92, 246, 0.06);
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  color: var(--brand);
+
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  &::after {
+    background-image: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(255, 255, 255, 0.07) 48%,
+      rgba(255, 255, 255, 0.05) 52%,
+      transparent 70%,
+      transparent 100%
+    );
+  }
+
+  &:hover {
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.45);
+    color: #fff;
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 0 30px rgba(139, 92, 246, 0.25),
+      0 0 60px rgba(139, 92, 246, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+    &::after {
+      background-position: 0% 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 16px rgba(139, 92, 246, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 }

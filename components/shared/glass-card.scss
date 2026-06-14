@@ -1,6 +1,5 @@
-@mixin glass-card-hover($sheen-opacity: 0.05, $gradient-opacity: 0.08) {
+@mixin glass-card-hover($sheen-opacity: 0.05, $gradient-opacity: 0.08, $radius: var(--radius-lg)) {
   position: relative;
-  overflow: hidden;
   border-radius: inherit;
   transition: border-color 0.4s ease, box-shadow 0.4s ease,
     background 0.4s ease, transform 0.4s ease;
@@ -19,28 +18,35 @@
     opacity: 0;
     transition: opacity 0.4s ease;
     border-radius: inherit;
+    clip-path: inset(0 round #{$radius});
     pointer-events: none;
     z-index: 1;
   }
 
-  // Glass sheen sweep — slides across on hover
+  // Glass sheen sweep — background-position animation (stays within bounds)
   &::after {
     content: "";
     position: absolute;
     top: 0;
-    left: -60%;
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(
-      105deg,
-      transparent,
-      rgba(255, 255, 255, $sheen-opacity),
-      transparent
-    );
-    transform: skewX(-15deg);
-    transition: left 0.7s ease;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    clip-path: inset(0 round #{$radius});
     pointer-events: none;
     z-index: 2;
+
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(255, 255, 255, $sheen-opacity) 48%,
+      rgba(255, 255, 255, $sheen-opacity * 0.7) 52%,
+      transparent 70%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    transition: background-position 0.8s ease;
   }
 
   &:hover {
@@ -56,7 +62,7 @@
     }
 
     &::after {
-      left: 130%;
+      background-position: 0% 0;
     }
   }
 }

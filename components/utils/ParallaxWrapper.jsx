@@ -21,6 +21,7 @@ export const ParallaxWrapper = ({ children, offset = 0.5 }) => {
       }
     };
 
+    // Use window scroll — the single scroll source of truth
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
@@ -32,7 +33,8 @@ export const ParallaxWrapper = ({ children, offset = 0.5 }) => {
       ref={ref}
       style={{
         transform: `translateY(${translateY}px)`,
-        transition: "transform 0.1s ease-out",
+        transition: "transform 0.12s cubic-bezier(0.16, 1, 0.3, 1)",
+        willChange: "transform",
       }}
     >
       {children}

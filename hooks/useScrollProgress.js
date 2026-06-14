@@ -7,12 +7,18 @@ export function useScrollProgress() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const html = document.documentElement;
-      const scrolled = html.scrollTop / (html.scrollHeight - html.clientHeight);
+      // Always read from window/documentElement — consistent with
+      // the single scroll container (html element).
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = docHeight > 0 ? scrollTop / docHeight : 0;
       setProgress(`${Math.min(scrolled * 100, 100)}%`);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // initialise on mount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

@@ -25,7 +25,7 @@
   backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  transition: all var(--transition-base);
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
 
   @include glass-card-hover(0.04, 0.06);
 
@@ -52,7 +52,7 @@
   border: 3px solid #0a0a1a;
   box-shadow: 0 0 0 4px var(--brand), 0 0 20px rgba(139, 92, 246, 0.4);
   z-index: 10;
-  transition: all var(--transition-base);
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
 
   .timelineCard:hover & {
     transform: scale(1.2);
@@ -175,7 +175,7 @@
     position: relative;
     z-index: 10;
 
-    @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05);
+    @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05, $radius: 999px);
 
     &:hover {
       transform: translateY(-2px);

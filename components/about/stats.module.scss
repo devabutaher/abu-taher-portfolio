@@ -2,7 +2,6 @@
 
 .stats {
   position: relative;
-  margin-top: var(--space-8);
 }
 
 .statColumn {
@@ -51,7 +50,7 @@
   letter-spacing: 0.02em;
   transition: all var(--transition-base);
 
-  @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05);
+  @include glass-card-hover($sheen-opacity: 0.03, $gradient-opacity: 0.05, $radius: var(--radius-full));
 
   &:hover {
     background: rgba(139, 92, 246, 0.15);

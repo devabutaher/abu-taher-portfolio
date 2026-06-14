@@ -3,9 +3,9 @@
 import { TESTIMONIALS } from "@/data/testimonials";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
+import { motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { FaQuoteRight } from "react-icons/fa";
-import { Reveal } from "../utils/Reveal";
 import { SectionHeader } from "../utils/SectionHeader";
 import styles from "./Testimonial.module.scss";
 import { ParallaxWrapper } from "@/components/utils/ParallaxWrapper";
@@ -54,44 +54,48 @@ export const Testimonial = () => {
           {TESTIMONIALS.map(({ name, text, work }) => (
             <div
               key={name}
-              className="flex-[0_0_100%] md:flex-[0_0_50%] px-2 sm:px-3"
+              className="flex-[0_0_100%] md:flex-[0_0_50%] px-2 sm:px-3 flex flex-col"
             >
-              <Reveal>
-                <div className={styles.testimonialCard}>
-                  <blockquote>
-                    <p className="text-[1.6rem] sm:text-[1.8rem] leading-relaxed text-[var(--text)] font-light font-sans">
-                      &ldquo;{text}&rdquo;
-                    </p>
-                  </blockquote>
+              <motion.div
+                initial={{ opacity: 0, y: 75 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+                className={styles.testimonialCard}
+              >
+                <blockquote>
+                  <p className="text-[1.6rem] sm:text-[1.8rem] leading-relaxed text-[var(--text)] font-light font-sans">
+                    &ldquo;{text}&rdquo;
+                  </p>
+                </blockquote>
 
-                  <div className="flex items-center justify-between pt-4">
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="
-                        w-14 h-14 rounded-full flex-shrink-0
-                        bg-[var(--brand)]/20 border-2 border-[var(--brand)]
-                        flex items-center justify-center
-                        text-[1.6rem] font-bold text-[var(--brand)]
-                      "
-                      >
-                        {name.charAt(0)}
-                      </div>
-                      <div>
-                        <p className="text-[1.7rem] font-semibold font-heading text-[var(--text)] leading-tight">
-                          {name}
-                        </p>
-                        <p className="text-[1.4rem] text-[var(--brand)] font-medium">
-                          {work}
-                        </p>
-                      </div>
+                <div className="flex items-center justify-between pt-4">
+                  <div className="flex items-center gap-4">
+                    <div
+                      className="
+                      w-14 h-14 rounded-full flex-shrink-0
+                      bg-[var(--brand)]/20 border-2 border-[var(--brand)]
+                      flex items-center justify-center
+                      text-[1.6rem] font-bold text-[var(--brand)]
+                    "
+                    >
+                      {name.charAt(0)}
                     </div>
-                    <FaQuoteRight
-                      className="text-[var(--brand)] opacity-30 flex-shrink-0"
-                      size="3rem"
-                    />
+                    <div>
+                      <p className="text-[1.7rem] font-semibold font-heading text-[var(--text)] leading-tight">
+                        {name}
+                      </p>
+                      <p className="text-[1.4rem] text-[var(--brand)] font-medium">
+                        {work}
+                      </p>
+                    </div>
                   </div>
+                  <FaQuoteRight
+                    className="text-[var(--brand)] opacity-30 flex-shrink-0"
+                    size="3rem"
+                  />
                 </div>
-              </Reveal>
+              </motion.div>
             </div>
           ))}
         </div>
